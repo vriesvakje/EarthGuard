@@ -72,11 +72,12 @@ export async function POST(request: NextRequest) {
     }
 
     // Determine the base URL for success/cancel redirects
+    // Stripe requires HTTPS for redirect URLs, so we use NEXT_PUBLIC_BASE_URL
+    // (ngrok or production URL) instead of localhost which causes SSL errors
     const forwardedHost = request.headers.get("x-forwarded-host");
-    const origin = request.headers.get("origin") || "http://localhost:3000";
     const baseUrl = forwardedHost
       ? `https://${forwardedHost}`
-      : origin;
+      : process.env.NEXT_PUBLIC_BASE_URL || request.headers.get("origin") || "http://localhost:3000";
 
     // Create Stripe Checkout Session
     const session = await stripe.checkout.sessions.create({
