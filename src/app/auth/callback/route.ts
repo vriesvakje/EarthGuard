@@ -11,13 +11,10 @@ export async function GET(request: Request) {
     const supabase = await createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
-      const forwardedHost = request.headers.get("x-forwarded-host"); // original URL before load balancer
-      const isLocalEnv = process.env.NODE_ENV === "development";
-      if (isLocalEnv) {
-        // we can be sure that there is no load balancer in between, so no need to set
-        // x-forwarded-host
-        return NextResponse.redirect(`${origin}${next}`);
-      } else if (forwardedHost) {
+      const forwardedHost = request.headers.get("x-forwarded-host"); // original URL before load balancer (e.g. ngrok)
+      if (forwardedHost) {
+        // ngrok or other reverse proxy — use the original host so the redirect
+        // goes back to the public URL instead of localhost
         return NextResponse.redirect(`https://${forwardedHost}${next}`);
       } else {
         return NextResponse.redirect(`${origin}${next}`);

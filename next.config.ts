@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ['morally-unwoven-radar.ngrok-free.dev'],
   images: {
     remotePatterns: [
       {

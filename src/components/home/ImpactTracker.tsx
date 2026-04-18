@@ -3,40 +3,40 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Trees, Maximize2, CloudRain, Squirrel } from "lucide-react";
+import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 
 const initialStats = [
   {
     id: "m2",
     label: "Herstelde m²",
-    value: "12.345",
+    value: "0",
     unit: "m²",
-    icon: Maximize2,
+    icon: "/herstelde-m2.svg",
     color: "text-forest"
   },
   {
     id: "trees",
     label: "Aantal Bomen",
-    value: "2.567",
+    value: "0",
     unit: "",
-    icon: Trees,
+    icon: "/aantal-bomen.svg",
     color: "text-green-600"
   },
   {
     id: "co2",
     label: "CO2-opslag",
-    value: "145",
+    value: "0",
     unit: "t",
-    icon: CloudRain,
+    icon: "/co2-opslag.svg",
     color: "text-blue-600"
   },
   {
     id: "animals",
     label: "Aantal Dieren",
-    value: "18",
+    value: "0",
     unit: "",
-    icon: Squirrel,
+    icon: "/aantaldieren.svg",
     color: "text-earth"
   }
 ];
@@ -74,7 +74,7 @@ export function ImpactTracker() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div className="max-w-xl">
             <h2 className="text-sm font-bold tracking-widest text-earth uppercase mb-4">Onze Impact</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-forest">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-forest">
               Samen maken we het verschil voor de natuur.
             </h3>
           </div>
@@ -100,7 +100,7 @@ export function ImpactTracker() {
               <Card className="border-none shadow-xl bg-white/50 backdrop-blur-sm hover:bg-white transition-colors overflow-hidden group">
                 <CardContent className="p-8">
                   <div className={`p-3 rounded-2xl bg-beige inline-block mb-6 group-hover:scale-110 transition-transform`}>
-                    <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                    <Image src={stat.icon} alt={stat.label} width={24} height={24} className={`h-6 w-6 ${stat.color}`} />
                   </div>
                   <div className="space-y-1">
                     <p className="text-sm font-medium text-muted-foreground">{stat.label}</p>

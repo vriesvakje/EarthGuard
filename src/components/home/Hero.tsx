@@ -6,18 +6,18 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[80vh] flex items-center overflow-hidden text-beige">
+    <section className="relative min-h-[80vh] flex items-center overflow-hidden text-white">
       {/* Background Image */}
       <Image
         src="/achtergrond.png"
         alt="Achtergrond"
         fill
-        className="object-cover"
+        className="object-cover -z-20"
         sizes="100vw"
         priority
       />
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-forest/70 pointer-events-none"></div>
+      {/* Gradient overlay: dark left to light right on desktop, dark bottom on mobile for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30 md:from-black/90 md:via-black/60 md:to-black/5 md:bg-gradient-to-r -z-10 pointer-events-none"></div>
       
       <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
         <motion.div 
@@ -26,12 +26,12 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="space-y-8"
         >
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
             Breng biodiversiteit <br />
             <span className="text-beige/80 italic">terug in Brabant.</span>
           </h1>
-          <p className="text-xl md:text-2xl max-w-lg opacity-90 leading-relaxed">
-            Adopteer je eigen stukje voedselbos in Tilburg en help de natuur herstellen. 
+          <p className="text-lg sm:text-xl md:text-2xl max-w-lg opacity-90 leading-relaxed">
+            Adopteer je eigen stukje voedselbos in Brabant en help de natuur herstellen. 
             Van vergeten overhoekjes tot bloeiende ecosystemen met varkens en kippen.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -62,8 +62,8 @@ export function Hero() {
           </div>
           {/* Decorative element */}
           <div className="absolute -bottom-6 -left-6 bg-earth text-beige p-8 rounded-2xl shadow-xl max-w-[200px]">
-            <p className="text-4xl font-bold mb-1">65%</p>
-            <p className="text-sm font-medium opacity-90">van doel bereikt voor Tilburg I</p>
+            <p className="text-4xl font-bold mb-1">0%</p>
+            <p className="text-sm font-medium opacity-90">van doel bereikt voor Brabant I</p>
           </div>
         </motion.div>
       </div>

@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MapPin, Info, Trees, Squirrel, Droplets } from "lucide-react";
+import Link from "next/link";
 import { GoogleMap, useJsApiLoader, MarkerF } from "@react-google-maps/api";
 import { supabase } from "@/lib/supabase";
 
@@ -49,6 +50,8 @@ export function InteractiveMap() {
   const [plots, setPlots] = useState<Plot[]>([]);
   const [selectedPlot, setSelectedPlot] = useState<Plot | null>(null);
 
+  const hasApiKey = !!process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
@@ -85,7 +88,7 @@ export function InteractiveMap() {
 
         <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
           <div className="lg:col-span-2 relative aspect-[16/10] bg-emerald-100 rounded-[3rem] overflow-hidden border-8 border-white shadow-2xl">
-            {isLoaded ? (
+            {hasApiKey && isLoaded ? (
               <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={center}
@@ -98,8 +101,8 @@ export function InteractiveMap() {
                     position={{ lat: plot.lat, lng: plot.lng }}
                     onClick={() => setSelectedPlot(plot)}
                     icon={{
-                      url: plot.type === 'forest' ? 'https://cdn-icons-png.flaticon.com/32/628/628283.png' : 
-                           plot.type === 'pond' ? 'https://cdn-icons-png.flaticon.com/32/3105/3105807.png' : 
+                      url: plot.type === 'forest' ? 'https://cdn-icons-png.flaticon.com/32/628/628283.png' :
+                           plot.type === 'pond' ? 'https://cdn-icons-png.flaticon.com/32/3105/3105807.png' :
                            'https://cdn-icons-png.flaticon.com/32/3069/3069172.png',
                       scaledSize: new google.maps.Size(40, 40),
                     }}
@@ -107,8 +110,14 @@ export function InteractiveMap() {
                 ))}
               </GoogleMap>
             ) : (
-              <div className="absolute inset-0 flex items-center justify-center bg-emerald-50 text-forest">
-                Kaart laden...
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green-50 via-emerald-50 to-blue-50">
+                <div className="text-center p-8 space-y-4">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-forest/10">
+                    <MapPin className="h-8 w-8 text-forest" />
+                  </div>
+                  <p className="text-xl font-bold text-forest">Tilburg, Project I</p>
+                  <p className="text-sm text-forest/60">Bekijk onze projectlocaties op de <Link href="/kaart" className="underline hover:opacity-80">kaart pagina</Link></p>
+                </div>
               </div>
             )}
             

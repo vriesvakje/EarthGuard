@@ -7,7 +7,7 @@ import { MapPin } from "lucide-react";
 
 export function CrowdfundingProgress() {
   const target = 10000;
-  const current = 6500;
+  const current = 0;
   const percentage = (current / target) * 100;
 
   return (
@@ -19,23 +19,23 @@ export function CrowdfundingProgress() {
               <MapPin className="h-4 w-4" />
               <span>Tilburg, Project I</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight">
               Crowdfunding: <br />
               Ons eerste kavel.
             </h2>
-            <p className="text-xl opacity-90 leading-relaxed max-w-lg">
+            <p className="text-lg sm:text-xl opacity-90 leading-relaxed max-w-lg">
               Help ons €10.000 op te halen om het eerste stuk landbouwgrond in Tilburg aan te kopen en om te zetten in een biodivers paradijs.
             </p>
             
             <div className="space-y-4 max-w-lg">
               <div className="flex justify-between items-end">
-                <span className="text-3xl font-bold">€6.500</span>
+                <span className="text-3xl font-bold">€0</span>
                 <span className="text-sm opacity-80">Doel: €10.000</span>
               </div>
               <Progress value={percentage} className="h-4 bg-beige/20" />
               <div className="flex justify-between text-sm font-medium">
                 <span>{percentage}% gefinancierd</span>
-                <span>Nog €3.500 te gaan</span>
+                <span>Nog €10.000 te gaan</span>
               </div>
             </div>
 
