@@ -5,14 +5,58 @@ import { motion } from "framer-motion";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Trees, Squirrel, Droplets, CreditCard, CheckCircle2 } from "lucide-react";
+import { Trees, Squirrel, Droplets, CreditCard, CheckCircle2, Loader2 } from "lucide-react";
+import { createClient } from "@/lib/supabase/browser";
 
 export default function AdoptPage() {
   const [meters, setMeters] = useState(10);
   const [extraDonation, setExtraDonation] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const pricePerMeter = 12.50;
   const total = (meters * pricePerMeter) + (extraDonation === 'vijver' ? 25 : extraDonation === 'dieren' ? 15 : 0);
+
+  const handleCheckout = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      // Check if user is logged in
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if (!user) {
+        // Redirect to login with return URL
+        window.location.href = `/login?redirect=/adopteer`;
+        return;
+      }
+
+      // Create Stripe Checkout Session
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          meters,
+          extraDonation,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Er is iets misgegaan");
+      }
+
+      // Redirect to Stripe Checkout
+      if (data.url) {
+        window.location.href = data.url;
+      }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Er is iets misgegaan";
+      setError(msg);
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 py-16 max-w-5xl">
@@ -133,6 +177,12 @@ export default function AdoptPage() {
                 </div>
               </div>
 
+              {error && (
+                <div className="bg-red-50 text-red-600 text-sm p-4 rounded-xl">
+                  {error}
+                </div>
+              )}
+
               <div className="space-y-4 pt-4">
                 <p className="text-[10px] uppercase tracking-widest font-bold opacity-40 text-center">Betaal veilig via</p>
                 <div className="flex justify-center gap-4 opacity-40 grayscale">
@@ -140,8 +190,19 @@ export default function AdoptPage() {
                   <div className="w-12 h-8 bg-current rounded-md" />
                   <div className="w-12 h-8 bg-current rounded-md" />
                 </div>
-                <Button className="w-full h-14 bg-forest text-beige rounded-2xl text-lg font-bold shadow-lg hover:shadow-xl transition-all">
-                  AFREKENEN (STRIPE)
+                <Button 
+                  onClick={handleCheckout}
+                  disabled={loading}
+                  className="w-full h-14 bg-forest text-beige rounded-2xl text-lg font-bold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {loading ? (
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Bezig...
+                    </>
+                  ) : (
+                    "AFREKENEN"
+                  )}
                 </Button>
                 <p className="text-[10px] text-center opacity-40 px-4">
                   Door af te rekenen ga je akkoord met onze algemene voorwaarden.
