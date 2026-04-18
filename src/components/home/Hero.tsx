@@ -6,11 +6,18 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-forest text-beige">
-      {/* Background Pattern/Overlay */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`, backgroundSize: '24px 24px' }}></div>
-      </div>
+    <section className="relative min-h-[80vh] flex items-center overflow-hidden text-beige">
+      {/* Background Image */}
+      <Image
+        src="/achtergrond.png"
+        alt="Achtergrond"
+        fill
+        className="object-cover"
+        sizes="100vw"
+        priority
+      />
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-forest/70 pointer-events-none"></div>
       
       <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
         <motion.div 
