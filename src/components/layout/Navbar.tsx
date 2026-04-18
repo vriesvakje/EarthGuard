@@ -42,6 +42,7 @@ export function Navbar() {
   };
 
   const navLinks = [
+    { href: "/verhaal", label: "ONS VERHAAL" },
     { href: "/over-ons", label: "OVER ONS" },
     { href: "/kaart", label: "KAART & PROJECTEN" },
     { href: "/methode", label: "ONZE METHODE" },
