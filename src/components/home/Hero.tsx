@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -35,12 +36,16 @@ export function Hero() {
             Van vergeten overhoekjes tot bloeiende ecosystemen met varkens en kippen.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="bg-beige text-forest hover:bg-beige/90 rounded-full text-lg px-10 h-14">
-              KOOP JE m²
-            </Button>
-            <Button size="lg" variant="outline" className="border-beige text-beige bg-transparent hover:bg-beige hover:text-forest rounded-full text-lg px-10 h-14 transition-colors">
-              LEES ONS VERHAAL
-            </Button>
+            <Link href="/adopteer">
+              <Button size="lg" className="bg-beige text-forest hover:bg-beige/90 rounded-full text-lg px-10 h-14">
+                KOOP JE m²
+              </Button>
+            </Link>
+            <Link href="/verhaal">
+              <Button size="lg" variant="outline" className="border-beige text-beige bg-transparent hover:bg-beige hover:text-forest rounded-full text-lg px-10 h-14 transition-colors">
+                LEES ONS VERHAAL
+              </Button>
+            </Link>
           </div>
         </motion.div>
         
