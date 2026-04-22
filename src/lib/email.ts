@@ -1,6 +1,14 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy-initialise the Resend client so it doesn't throw at build time
+// when RESEND_API_KEY is absent from the environment.
+let _resend: Resend | null = null;
+function getResend(): Resend {
+  if (!_resend) {
+    _resend = new Resend(process.env.RESEND_API_KEY);
+  }
+  return _resend;
+}
 
 // The "from" address — uses Resend's test domain by default.
 // Once you verify your own domain in Resend, change this to e.g. "EarthGuard <noreply@earthguard.nl>"
@@ -26,7 +34,7 @@ export async function sendEmail({ to, subject, html, replyTo }: SendEmailParams)
     return { id: "skipped" };
   }
 
-  const { data, error } = await resend.emails.send({
+  const { data, error } = await getResend().emails.send({
     from: FROM_EMAIL,
     to,
     subject,
