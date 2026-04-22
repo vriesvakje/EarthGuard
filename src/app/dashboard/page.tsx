@@ -5,9 +5,12 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Trees, Map as MapIcon, Calendar, ArrowUpRight, Squirrel, Droplets, ShoppingBag } from "lucide-react";
+import { Trees, Map as MapIcon, Calendar, ArrowUpRight, Squirrel, Droplets, ShoppingBag, Leaf, Sun, Heart, Star } from "lucide-react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/browser";
+
+type LucideIcon = typeof Trees;
+const iconMap: Record<string, LucideIcon> = { Trees, Squirrel, ArrowUpRight, Droplets, Leaf, Sun, Heart, Star };
 
 type Order = {
   id: string;
@@ -18,9 +21,18 @@ type Order = {
   payment_status: string;
 };
 
-const staticUpdates = [
+type UpdateItem = {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  icon: LucideIcon;
+  color: string;
+};
+
+const defaultUpdates: UpdateItem[] = [
   {
-    id: 1,
+    id: "1",
     title: "Nieuwe boom geplant!",
     description: "Er is vandaag een nieuwe walnootboom geplant op jouw stukje grond.",
     date: "Vandaag, 10:30",
@@ -28,7 +40,7 @@ const staticUpdates = [
     color: "bg-green-100 text-green-600"
   },
   {
-    id: 2,
+    id: "2",
     title: "Vogelnestkastje geplaatst",
     description: "Een pimpelmees heeft zijn intrek genomen in een nieuw nestkastje nabij jouw m².",
     date: "Gisteren",
@@ -36,7 +48,7 @@ const staticUpdates = [
     color: "bg-orange-100 text-orange-600"
   },
   {
-    id: 3,
+    id: "3",
     title: "Bodemherstel update",
     description: "De stikstofwaarden in de bodem zijn met 15% gedaald sinds de start.",
     date: "3 dagen geleden",
@@ -48,6 +60,7 @@ const staticUpdates = [
 export default function DashboardPage() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [totalMeters, setTotalMeters] = useState(0);
+  const [updates, setUpdates] = useState<UpdateItem[]>(defaultUpdates);
   const [totalSpent, setTotalSpent] = useState(0);
 
   useEffect(() => {
@@ -71,6 +84,29 @@ export default function DashboardPage() {
       }
     }
     fetchOrders();
+
+    // Fetch dynamic updates
+    async function fetchUpdates() {
+      const supabase = createClient();
+      const { data } = await supabase
+        .from("updates")
+        .select("*")
+        .eq("active", true)
+        .order("sort_order", { ascending: true });
+      if (data && data.length > 0) {
+        setUpdates(
+          data.map((u: { id: string; title: string; description: string; icon: string; color: string; created_at: string }) => ({
+            id: u.id,
+            title: u.title,
+            description: u.description,
+            date: new Date(u.created_at).toLocaleDateString("nl-NL", { day: "numeric", month: "long" }),
+            icon: iconMap[u.icon] || Trees,
+            color: u.color,
+          }))
+        );
+      }
+    }
+    fetchUpdates();
   }, []);
 
   // Calculate level based on total meters
@@ -236,9 +272,9 @@ export default function DashboardPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-8">
-              {staticUpdates.map((update, i) => (
-                <div key={update.id} className="relative flex gap-4">
-                  {i !== staticUpdates.length - 1 && (
+              {updates.map((update, i) => (
+                  <div key={update.id} className="relative flex gap-4">
+                    {i !== updates.length - 1 && (
                     <div className="absolute left-6 top-10 bottom-[-32px] w-[2px] bg-beige" />
                   )}
                   <div className={`z-10 w-12 h-12 rounded-full flex items-center justify-center shrink-0 ${update.color}`}>

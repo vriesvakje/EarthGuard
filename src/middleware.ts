@@ -37,6 +37,9 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
+  // Admin emails that can access /admin
+  const ADMIN_EMAILS = ["earthguard.project@gmail.com"];
+
   // Protect dashboard route - redirect to login if not authenticated
   if (
     request.nextUrl.pathname.startsWith("/dashboard") &&
@@ -46,6 +49,21 @@ export async function middleware(request: NextRequest) {
     url.pathname = "/login";
     url.searchParams.set("redirect", request.nextUrl.pathname);
     return NextResponse.redirect(url);
+  }
+
+  // Protect admin route - must be authenticated + admin email
+  if (request.nextUrl.pathname.startsWith("/admin")) {
+    if (!user) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/login";
+      url.searchParams.set("redirect", request.nextUrl.pathname);
+      return NextResponse.redirect(url);
+    }
+    if (!ADMIN_EMAILS.includes(user.email ?? "")) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/dashboard";
+      return NextResponse.redirect(url);
+    }
   }
 
   // Redirect authenticated users away from login page

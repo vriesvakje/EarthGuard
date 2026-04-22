@@ -24,10 +24,21 @@ import {
   Clock,
   Star,
   Heart,
+  Trees,
+  Droplets,
+  Squirrel,
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ContactForm from "@/components/forms/ContactForm";
+import { supabase } from "@/lib/supabase";
+
+// Icon lookup for dynamic data from Supabase
+type LucideIcon = typeof Users;
+const iconMap: Record<string, LucideIcon> = {
+  Users, Leaf, Calendar, Heart, HandHeart, ShoppingBasket,
+  Egg, Carrot, Apple, Trees, Droplets, Squirrel, Star, Trophy, Mail, MapPin,
+};
 
 const communityStats = [
   { label: "Actieve Guards", value: "0", icon: Users, color: "text-forest" },
@@ -189,6 +200,87 @@ export default function CommunityPage() {
   const [subscribing, setSubscribing] = useState(false);
   const [subscribeError, setSubscribeError] = useState<string | null>(null);
 
+  // Dynamic data from Supabase
+  const [dynamicStats, setDynamicStats] = useState(communityStats);
+  const [dynamicEvents, setDynamicEvents] = useState(events);
+  const [dynamicStories, setDynamicStories] = useState(stories);
+  const [dynamicHarvest, setDynamicHarvest] = useState(harvestItems);
+
+  useEffect(() => {
+    async function fetchDynamicData() {
+      // Fetch community stats
+      const { data: statsData } = await supabase
+        .from("community_stats")
+        .select("*")
+        .order("sort_order", { ascending: true });
+      if (statsData && statsData.length > 0) {
+        setDynamicStats(
+          statsData.map((s: { label: string; value: string; icon: string; color: string }) => ({
+            label: s.label,
+            value: s.value,
+            icon: iconMap[s.icon] || Users,
+            color: s.color,
+          }))
+        );
+      }
+
+      // Fetch events
+      const { data: eventsData } = await supabase
+        .from("events")
+        .select("*")
+        .eq("active", true)
+        .order("sort_order", { ascending: true });
+      if (eventsData && eventsData.length > 0) {
+        setDynamicEvents(
+          eventsData.map((e: { date: string; month: string; title: string; description: string; location: string; tag: string }) => ({
+            date: e.date,
+            month: e.month,
+            title: e.title,
+            description: e.description,
+            location: e.location,
+            tag: e.tag,
+          }))
+        );
+      }
+
+      // Fetch stories
+      const { data: storiesData } = await supabase
+        .from("stories")
+        .select("*")
+        .eq("active", true)
+        .order("sort_order", { ascending: true });
+      if (storiesData && storiesData.length > 0) {
+        setDynamicStories(
+          storiesData.map((s: { name: string; quote: string; role: string; initials: string }) => ({
+            name: s.name,
+            quote: s.quote,
+            role: s.role,
+            initials: s.initials,
+          }))
+        );
+      }
+
+      // Fetch harvest items
+      const { data: harvestData } = await supabase
+        .from("harvest_items")
+        .select("*")
+        .eq("active", true)
+        .order("sort_order", { ascending: true });
+      if (harvestData && harvestData.length > 0) {
+        setDynamicHarvest(
+          harvestData.map((h: { name: string; description: string; available: string; icon: string; color: string }) => ({
+            icon: iconMap[h.icon] || Egg,
+            name: h.name,
+            description: h.description,
+            available: h.available,
+            color: h.color,
+          }))
+        );
+      }
+    }
+    fetchDynamicData();
+  }, []);
+
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
@@ -284,7 +376,7 @@ export default function CommunityPage() {
           </motion.div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {communityStats.map((stat, index) => (
+            {dynamicStats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
@@ -377,7 +469,7 @@ export default function CommunityPage() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {events.map((event, index) => (
+            {dynamicEvents.map((event, index) => (
               <motion.div
                 key={event.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -438,7 +530,7 @@ export default function CommunityPage() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {stories.map((story, index) => (
+            {dynamicStories.map((story, index) => (
               <motion.div
                 key={story.name}
                 initial={{ opacity: 0, y: 20 }}
@@ -488,7 +580,7 @@ export default function CommunityPage() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {harvestItems.map((item, index) => (
+            {dynamicHarvest.map((item, index) => (
               <motion.div
                 key={item.name}
                 initial={{ opacity: 0, y: 20 }}

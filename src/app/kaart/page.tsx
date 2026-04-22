@@ -21,14 +21,26 @@ import {
   Apple,
 } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 
-const projects = [
+type LucideIcon = typeof Trees;
+const iconMap: Record<string, LucideIcon> = { Trees, Droplets, Squirrel, Leaf, Egg, Carrot, Apple };
+const typeColors: Record<string, { color: string; borderColor: string }> = {
+  forest: { color: "bg-green-100 text-green-600", borderColor: "border-green-200" },
+  pond: { color: "bg-blue-100 text-blue-600", borderColor: "border-blue-200" },
+  meadow: { color: "bg-amber-100 text-amber-700", borderColor: "border-amber-200" },
+  animals: { color: "bg-orange-100 text-orange-600", borderColor: "border-orange-200" },
+  urban: { color: "bg-purple-100 text-purple-600", borderColor: "border-purple-200" },
+};
+
+const defaultProjects = [
   {
-    id: 1,
+    id: "1",
     name: "Brabant I — Tilburg",
     location: "Berkel-Enschot, Tilburg",
     type: "forest",
-    icon: Trees,
+    icon: Trees as LucideIcon,
     status: "Opstart",
     progress: 0,
     target: 10000,
@@ -40,11 +52,11 @@ const projects = [
     borderColor: "border-green-200",
   },
   {
-    id: 2,
+    id: "2",
     name: "Brabant II — Biesbosch",
     location: "Biesbosch, Noord-Brabant",
     type: "pond",
-    icon: Droplets,
+    icon: Droplets as LucideIcon,
     status: "Gepland",
     progress: 0,
     target: 15000,
@@ -56,11 +68,11 @@ const projects = [
     borderColor: "border-blue-200",
   },
   {
-    id: 3,
+    id: "3",
     name: "Brabant III — Peel",
     location: "De Peel, Noord-Brabant",
     type: "animals",
-    icon: Squirrel,
+    icon: Squirrel as LucideIcon,
     status: "Gepland",
     progress: 0,
     target: 12000,
@@ -128,6 +140,41 @@ const produceItems = [
 ];
 
 export default function KaartPage() {
+  const [projects, setProjects] = useState(defaultProjects);
+
+  useEffect(() => {
+    async function fetchProjects() {
+      const { data } = await supabase
+        .from("projects")
+        .select("*")
+        .eq("active", true)
+        .order("sort_order", { ascending: true });
+      if (data && data.length > 0) {
+        setProjects(
+          data.map((p: { id: string; name: string; location: string; type: string; status: string; progress: number; target: number; current: number; description: string; features: string[] }) => {
+            const colors = typeColors[p.type] || typeColors.forest;
+            return {
+              id: p.id,
+              name: p.name,
+              location: p.location,
+              type: p.type,
+              icon: iconMap[p.type] || Trees,
+              status: p.status,
+              progress: p.progress,
+              target: p.target,
+              current: p.current,
+              description: p.description,
+              features: p.features || [],
+              color: colors.color,
+              borderColor: colors.borderColor,
+            };
+          })
+        );
+      }
+    }
+    fetchProjects();
+  }, []);
+
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
