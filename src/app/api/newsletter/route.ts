@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { sendAdminNotification, sendCustomerEmail } from "@/lib/email";
 import { newsletterConfirmationEmail } from "@/lib/email-templates";
 
@@ -24,8 +24,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Insert into Supabase
-    const supabase = await createClient();
+    // Insert into Supabase using admin client (bypasses RLS)
+    const supabase = createAdminClient();
     const { error: dbError } = await supabase
       .from("newsletter_subscribers")
       .insert({ email });
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
       }
       console.error("Newsletter DB error:", dbError);
       return NextResponse.json(
-        { error: "Er is iets misgegaan" },
+        { error: "Er is iets misgegaan", details: dbError.message },
         { status: 500 }
       );
     }
@@ -77,8 +77,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Newsletter subscribe error:", error);
+    const message = error instanceof Error ? error.message : "Er is iets misgegaan";
     return NextResponse.json(
-      { error: "Er is iets misgegaan" },
+      { error: "Er is iets misgegaan", details: message },
       { status: 500 }
     );
   }
