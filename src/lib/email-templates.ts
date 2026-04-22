@@ -307,3 +307,48 @@ export function welcomeEmail(params: {
     </html>
   `;
 }
+
+/**
+ * Newsletter subscription confirmation email.
+ */
+export function newsletterConfirmationEmail(params: {
+  email: string;
+}): string {
+  const { email } = params;
+
+  return `
+    <!DOCTYPE html>
+    <html>
+    <head><meta charset="utf-8"></head>
+    <body style="${BASE_STYLES}">
+      <div style="border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+        ${header("Nieuwsbrief bevestiging")}
+
+        <div style="padding: 32px 24px; background-color: white;">
+          <h2 style="color: ${FOREST}; font-size: 22px; margin: 0 0 16px;">
+            Je bent ingeschreven! 🌱
+          </h2>
+          <p style="color: ${FOREST}; opacity: 0.8; font-size: 16px;">
+            Bedankt voor je inschrijving op de EarthGuard nieuwsbrief.
+            Vanaf nu houd je wekelijks op de hoogte van wat er groeit en bloeit in ons voedselbos.
+          </p>
+
+          <div style="background-color: ${BEIGE}; border-radius: 12px; padding: 20px; margin: 24px 0;">
+            <h3 style="color: ${FOREST}; margin: 0 0 12px; font-size: 16px;">Wat kun je verwachten?</h3>
+            <p style="margin: 8px 0; color: ${FOREST};">🌿 Updates over het voedselbos</p>
+            <p style="margin: 8px 0; color: ${FOREST};">📅 Uitnodigingen voor evenementen</p>
+            <p style="margin: 8px 0; color: ${FOREST};">🥕 Tips over lokaal en seizoensgebonden eten</p>
+            <p style="margin: 8px 0; color: ${FOREST};">🐾 Verhalen over de dieren en planten</p>
+          </div>
+
+          <div style="text-align: center;">
+            ${button("Bekijk de Community →", "https://earthguard.nl/community")}
+          </div>
+        </div>
+
+        ${footer()}
+      </div>
+    </body>
+    </html>
+  `;
+}

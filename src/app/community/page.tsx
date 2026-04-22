@@ -186,12 +186,36 @@ const leaderboard = [
 export default function CommunityPage() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [subscribing, setSubscribing] = useState(false);
+  const [subscribeError, setSubscribeError] = useState<string | null>(null);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+
+    setSubscribing(true);
+    setSubscribeError(null);
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Er is iets misgegaan");
+      }
+
       setSubscribed(true);
       setEmail("");
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Er is iets misgegaan";
+      setSubscribeError(msg);
+    } finally {
+      setSubscribing(false);
     }
   };
 
@@ -599,15 +623,20 @@ export default function CommunityPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    disabled={subscribing}
                     className="bg-beige/10 border-beige/20 text-beige placeholder:text-beige/40 rounded-full h-12 px-6 focus:border-beige"
                   />
                   <Button
                     type="submit"
+                    disabled={subscribing}
                     className="bg-beige text-forest hover:bg-beige/90 rounded-full h-12 px-8 shrink-0"
                   >
-                    AANMELDEN
+                    {subscribing ? "..." : "AANMELDEN"}
                   </Button>
                 </form>
+              )}
+              {subscribeError && (
+                <p className="mt-3 text-sm text-red-300">{subscribeError}</p>
               )}
             </div>
           </motion.div>
