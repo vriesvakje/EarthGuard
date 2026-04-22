@@ -32,7 +32,7 @@ export function Hero() {
             <span className="text-beige/80 italic">terug in Brabant.</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl max-w-lg opacity-90 leading-relaxed">
-            Adopteer je eigen stukje voedselbos in Brabant en help de natuur herstellen. 
+            Adopteer je eigen stukje Agroforestry in Brabant en help de natuur herstellen.
             Van vergeten overhoekjes tot bloeiende ecosystemen met varkens en kippen.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -58,7 +58,7 @@ export function Hero() {
           <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-4 border-beige/20">
             <Image 
               src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1000&auto=format&fit=crop" 
-              alt="Voedselbos" 
+              alt="Agroforestry"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"

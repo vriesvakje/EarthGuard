@@ -17,7 +17,7 @@ import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "EarthGuard | Breng biodiversiteit terug in Brabant",
-  description: "Adopteer je eigen stukje voedselbos in Brabant en help de natuur herstellen.",
+  description: "Adopteer je eigen stukje Agroforestry in Brabant en help de natuur herstellen.",
 };
 
 export default function RootLayout({

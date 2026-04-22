@@ -166,7 +166,7 @@ export default function DashboardPage() {
                           )}
                         </div>
                         <div>
-                          <p className="font-bold text-forest">{order.meters}m² Biodivers Voedselbos</p>
+                          <p className="font-bold text-forest">{order.meters}m² Biodivers Agroforestry</p>
                           <p className="text-xs opacity-50">
                             {new Date(order.created_at).toLocaleDateString("nl-NL", {
                               day: "numeric",

@@ -175,7 +175,7 @@ export function InteractiveMap() {
                       </div>
 
                       <p className="text-sm leading-relaxed opacity-80">
-                        Dit perceel wordt omgezet in een gemengd voedselbos met focus op inheemse soorten en bodemherstel.
+                        Dit perceel wordt omgezet in een gemengde Agroforestry met focus op inheemse soorten en bodemherstel.
                       </p>
 
                       <div className="pt-4 space-y-3">

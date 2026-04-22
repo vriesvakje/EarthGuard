@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import ContactForm from "@/components/forms/ContactForm";
 
 const communityStats = [
   { label: "Actieve Guards", value: "0", icon: Users, color: "text-forest" },
@@ -40,7 +41,7 @@ const waysToJoin = [
     icon: Leaf,
     title: "Adopteer m²",
     description:
-      "Koop je eigen stukje natuur in Brabant. Vanaf €1 per m² ben je eigenaar van een levend stukje voedselbos. Je ziet via je dashboard precies wat er op jouw grond groeit en leeft.",
+      "Koop je eigen stukje natuur in Brabant. Vanaf €1 per m² ben je eigenaar van een levend stukje Agroforestry. Je ziet via je dashboard precies wat er op jouw grond groeit en leeft.",
     cta: "KOOP JE m²",
     href: "/adopteer",
     color: "bg-forest/10 text-forest",
@@ -58,7 +59,7 @@ const waysToJoin = [
     icon: ShoppingBasket,
     title: "Koop Lokaal",
     description:
-      "Bestel eieren van onze geredde kippen, verse groenten en fruit uit het voedselbos. Lokaal, chemievrij en 100% in dienst van de natuur. Elke euro gaat terug naar nieuw natuurherstel.",
+      "Bestel eieren van onze geredde kippen, verse groenten en fruit uit de Agroforestry. Lokaal, chemievrij en 100% in dienst van de natuur. Elke euro gaat terug naar nieuw natuurherstel.",
     cta: "BEKIJK DE OOGST",
     href: "#oogst",
     color: "bg-amber-100 text-amber-700",
@@ -98,7 +99,7 @@ const events = [
     month: "2025",
     title: "Open Dag — Kom Kijken",
     description:
-      "Elke zaterdag kun je langskomen om te zien hoe het voedselbos zich ontwikkelt. Rondleiding om 11:00 en 14:00.",
+      "Elke zaterdag kun je langskomen om te zien hoe de Agroforestry zich ontwikkelt. Rondleiding om 11:00 en 14:00.",
     location: "Tilburg, Project I",
     tag: "Rondleiding",
   },
@@ -139,7 +140,7 @@ const harvestItems = [
   {
     icon: Carrot,
     name: "Seizoensgroenten",
-    description: "Chemievrije groenten uit de kruidlaag en bodembedekkers van ons voedselbos. Wat het bos geeft, delen we.",
+    description: "Chemievrije groenten uit de kruidlaag en bodembedekkers van onze Agroforestry. Wat het bos geeft, delen we.",
     available: "Lente t/m Herfst",
     color: "bg-green-100 text-green-600",
   },
@@ -458,7 +459,7 @@ export default function CommunityPage() {
               De Oogst
             </h3>
             <p className="text-lg text-forest/70 max-w-xl mx-auto">
-              Wat het voedselbos produceert, delen we met de community. Lokaal, vers en 100% in dienst van de natuur.
+              Wat de Agroforestry produceert, delen we met de community. Lokaal, vers en 100% in dienst van de natuur.
             </p>
           </motion.div>
 
@@ -584,7 +585,7 @@ export default function CommunityPage() {
                 Blijf op de hoogte
               </h3>
               <p className="text-lg opacity-80 mb-8 max-w-lg mx-auto">
-                Ontvang updates over wat er groeit, bloeit en leeft in het Brabantse voedselbos. Maximaal 1x per maand — geen spam, alleen natuur.
+                Ontvang updates over wat er groeit, bloeit en leeft in de Brabantse Agroforestry. Maximaal 1x per maand — geen spam, alleen natuur.
               </p>
               {subscribed ? (
                 <div className="p-4 rounded-2xl bg-beige/10 border border-beige/20">
@@ -650,7 +651,7 @@ export default function CommunityPage() {
               </div>
               <h4 className="text-xl font-bold text-forest mb-2">Instagram</h4>
               <p className="text-forest/60">@earthguard</p>
-              <p className="text-sm text-forest/50 mt-2">Dagelijkse updates uit het voedselbos</p>
+              <p className="text-sm text-forest/50 mt-2">Dagelijkse updates uit de Agroforestry</p>
             </motion.a>
 
             <motion.a
@@ -685,6 +686,11 @@ export default function CommunityPage() {
               <p className="text-forest/60">Elke zaterdag open</p>
               <p className="text-sm text-forest/50 mt-2">Tilburg, Project I — 11:00 & 14:00</p>
             </motion.div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="max-w-2xl mx-auto mb-16">
+            <ContactForm />
           </div>
 
           {/* Final CTA */}

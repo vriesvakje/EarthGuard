@@ -34,8 +34,8 @@ const projects = [
     target: 10000,
     current: 0,
     description:
-      "Ons allereerste project. Een braakliggend perceel dat wordt omgezet in een volledig voedselbos met zeven lagen, Kune Kune varkens en geredde scharrelkippen.",
-    features: ["Voedselbos 7 lagen", "Kune Kune varkens", "Geredde kippen", "Vijver"],
+      "Ons allereerste project. Een braakliggend perceel dat wordt omgezet in een volledige Agroforestry met zeven lagen, Kune Kune varkens en geredde scharrelkippen.",
+    features: ["Agroforestry 7 lagen", "Kune Kune varkens", "Geredde kippen", "Vijver"],
     color: "bg-green-100 text-green-600",
     borderColor: "border-green-200",
   },
@@ -66,7 +66,7 @@ const projects = [
     target: 12000,
     current: 0,
     description:
-      "Op de zandgronden van de Peel bouwen we een dierenrijk voedselbos. Speciale focus op bodemherstel en het creëren van habitats voor inheemse diersoorten.",
+      "Op de zandgronden van de Peel bouwen we een dierenrijke Agroforestry. Speciale focus op bodemherstel en het creëren van habitats voor inheemse diersoorten.",
     features: ["Bodemherstel", "Inheemse diersoorten", "Zandgrond adaptie", "Heideborder"],
     color: "bg-amber-100 text-amber-700",
     borderColor: "border-amber-200",
@@ -91,7 +91,7 @@ const projectTimeline = [
   },
   {
     phase: "Planten zaaien",
-    description: "Alle 7 lagen van het voedselbos aanleggen",
+    description: "Alle 7 lagen van de Agroforestry aanleggen",
     status: "upcoming" as const,
   },
   {
@@ -239,7 +239,7 @@ export default function KaartPage() {
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-forest" />
-                    <span className="text-xs text-forest/70">Voedselbos</span>
+                    <span className="text-xs text-forest/70">Agroforestry</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-blue-500" />

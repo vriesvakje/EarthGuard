@@ -91,7 +91,7 @@ export default function VerhaalPage() {
                   We doken in de wetenschap van bodemgezondheid en ontdekten iets opwindends: gezonde bodem is de sleutel tot alles. Een bodem die leeft — vol schimmels, bacteriën en organisch materiaal — kan veel meer CO2 opslaan, water vasthouden, en voedsel produceren dan een uitgeputte bodem.
                 </p>
                 <p>
-                  We leerden over de zeven lagen van een voedselbos: van de wortellaag tot de bladerkruin, elke laag heeft een functie. Samen vormen ze een zelfdragend ecosysteem dat steeds sterker wordt.
+                  We leerden over de zeven lagen van Agroforestry: van de wortellaag tot de bladerkruin, elke laag heeft een functie. Samen vormen ze een zelfdragend ecosysteem dat steeds sterker wordt.
                 </p>
                 <p>
                   En we ontdekten de kracht van de circulaire economie: groenten verbouwen, kippen redden van de legbatterij, eieren verkopen, en de opbrengst investeren in meer natuur. Een keten van goedheid die zichzelf versterkt.
@@ -109,7 +109,7 @@ export default function VerhaalPage() {
             <span className="text-sm uppercase tracking-widest font-bold text-forest/40 mb-4 block">Hoofdstuk 3</span>
             <h2 className="text-3xl md:text-4xl font-black text-forest mb-6">De eerste stappen</h2>
             <p className="text-forest/80 leading-relaxed">
-              Van theorie naar praktijk. We begonnen met Brabant I — ons eerste project in Tilburg. Elke vierkante meter die werd geadopteerd, werd omgezet in echt voedselbos.
+              Van theorie naar praktijk. We begonnen met Brabant I — ons eerste project in Tilburg. Elke vierkante meter die werd geadopteerd, werd omgezet in echte Agroforestry.
             </p>
           </motion.div>
 
@@ -130,7 +130,7 @@ export default function VerhaalPage() {
               {
                 icon: Sun,
                 title: "Laten groeien",
-                description: "Bomen, struiken en kruiden werden geplant. Laag na laag ontstond er een voedselbos.",
+                description: "Bomen, struiken en kruiden werden geplant. Laag na laag ontstond er een Agroforestry.",
                 color: "bg-amber-100 text-amber-600",
               },
             ].map((step, index) => (
@@ -243,7 +243,7 @@ export default function VerhaalPage() {
             <span className="text-sm uppercase tracking-widest font-bold text-forest/40 mb-4 block">Hoofdstuk 6</span>
             <h2 className="text-3xl md:text-4xl font-black text-forest mb-6">De toekomst</h2>
             <p className="text-forest/80 leading-relaxed">
-              Dit is pas het begin. We dromen van voedselbossen door heel Brabant — en daarna heel Nederland. Van elke boer die overstapt naar regeneratieve landbouw. Van een wereld waar natuur geen uitzondering is, maar de norm.
+              Dit is pas het begin. We dromen van Agroforestry door heel Brabant — en daarna heel Nederland. Van elke boer die overstapt naar regeneratieve landbouw. Van een wereld waar natuur geen uitzondering is, maar de norm.
             </p>
           </motion.div>
 
@@ -252,7 +252,7 @@ export default function VerhaalPage() {
               {
                 icon: Trees,
                 title: "Meer projecten",
-                description: "Brabant II, III en verder. Elk nieuw project herstelt meer natuur en bouwt meer voedselbossen.",
+                description: "Brabant II, III en verder. Elk nieuw project herstelt meer natuur en bouwt meer Agroforestry.",
               },
               {
                 icon: Heart,

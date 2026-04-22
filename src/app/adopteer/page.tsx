@@ -62,7 +62,7 @@ export default function AdoptPage() {
     <div className="container mx-auto px-4 py-16 max-w-5xl">
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold text-forest mb-4">Adopteer je meters</h1>
-        <p className="text-lg opacity-80">Elke meter die je adopteert, wordt direct omgezet in biodivers voedselbos.</p>
+        <p className="text-lg opacity-80">Elke meter die je adopteert, wordt direct omgezet in biodivers Agroforestry.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">

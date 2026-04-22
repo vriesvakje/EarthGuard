@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { createClient } from "@/lib/supabase/server";
+import { sendCustomerEmail, sendAdminNotification } from "@/lib/email";
+import {
+  paymentConfirmationEmail,
+  newOrderAdminEmail,
+} from "@/lib/email-templates";
 
 // Disable body parsing — Stripe needs the raw body to verify the signature
 export const runtime = "nodejs";
@@ -59,7 +64,56 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: "Database error" }, { status: 500 });
       }
 
-      console.log(`✅ Order saved: ${meters}m² for user ${userId}, €${(amountTotal / 100).toFixed(2)}`);
+      console.log(
+        `✅ Order saved: ${meters}m² for user ${userId}, €${(amountTotal / 100).toFixed(2)}`
+      );
+
+      // ── Send emails ──────────────────────────────────────────────
+      const customerEmail = session.customer_email ?? metadata.userEmail ?? "";
+      const totalFormatted = `€${(amountTotal / 100).toFixed(2)}`;
+      const baseUrl =
+        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
+      // 1. Payment confirmation to the customer
+      if (customerEmail) {
+        try {
+          await sendCustomerEmail(
+            customerEmail,
+            `Bedankt! Je hebt ${meters}m² geadopteerd 🌿`,
+            paymentConfirmationEmail({
+              customerEmail,
+              meters: parseInt(meters, 10),
+              total: totalFormatted,
+              extraDonation:
+                extraDonation === "none" ? null : extraDonation,
+              dashboardUrl: `${baseUrl}/dashboard`,
+            })
+          );
+          console.log(`📧 Confirmation email sent to ${customerEmail}`);
+        } catch (emailErr) {
+          // Don't fail the webhook if email fails — order is already saved
+          console.error("⚠️ Failed to send confirmation email:", emailErr);
+        }
+      }
+
+      // 2. Admin notification about the new order
+      try {
+        await sendAdminNotification(
+          `🎉 Nieuwe adoptie: ${meters}m² — ${totalFormatted}`,
+          newOrderAdminEmail({
+            customerEmail,
+            meters: parseInt(meters, 10),
+            total: totalFormatted,
+            extraDonation:
+              extraDonation === "none" ? null : extraDonation,
+            stripeSessionId: session.id,
+          })
+        );
+        console.log("📧 Admin notification sent");
+      } catch (emailErr) {
+        console.error("⚠️ Failed to send admin notification:", emailErr);
+      }
+      // ── End emails ───────────────────────────────────────────────
     } catch (err) {
       console.error("Error processing webhook:", err);
       return NextResponse.json({ error: "Processing error" }, { status: 500 });

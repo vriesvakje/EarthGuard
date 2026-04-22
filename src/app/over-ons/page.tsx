@@ -53,7 +53,7 @@ export default function OverOnsPage() {
                   Bij EarthGuard geloven we dat natuurherstel niet ingewikkeld hoeft te zijn. Terwijl de wereld praat over verre klimaatdoelen, steken wij de handen in de eigen provinciale klei. Onze missie is simpel: <strong className="text-forest">Biodiversiteit terugbrengen in heel Brabant, vierkante meter voor vierkante meter.</strong>
                 </p>
                 <p>
-                  Wij transformeren vergeten &ldquo;overhoekjes&rdquo; en braakliggende percelen tussen de Brabantse steden en dorpen tot bloeiende voedselbossen. Plekken waar de bodem weer leeft, waar onze Kune Kune varkens de grond omwroeten en waar de natuur de ruimte krijgt om haar eigen balans te vinden. De groenten en eieren die het bos produceert verkopen we lokaal — en elke euro gaat terug naar het herstel van nog meer natuur.
+                  Wij transformeren vergeten &ldquo;overhoekjes&rdquo; en braakliggende percelen tussen de Brabantse steden en dorpen tot bloeiende Agroforestry. Plekken waar de bodem weer leeft, waar onze Kune Kune varkens de grond omwroeten en waar de natuur de ruimte krijgt om haar eigen balans te vinden. De groenten en eieren die het bos produceert verkopen we lokaal — en elke euro gaat terug naar het herstel van nog meer natuur.
                 </p>
               </div>
             </motion.div>
@@ -148,12 +148,12 @@ export default function OverOnsPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-sm font-bold tracking-widest text-earth uppercase mb-4">Onze Methode</h2>
+              <h2 className="text-sm font-bold tracking-widest text-earth uppercase mb-4">De Bodem</h2>
               <h3 className="text-4xl md:text-5xl font-bold text-forest mb-6 leading-tight">
                 Natuurherstel met een hart
               </h3>
               <p className="text-lg text-forest/70 leading-relaxed mb-8">
-                Een voedselbos is meer dan een verzameling bomen. Het is een ecosysteem dat zichzelf in stand houdt en voedsel levert voor mens en dier. Door te investeren in EarthGuard, investeer je in:
+                Agroforestry is meer dan een verzameling bomen. Het is een ecosysteem dat zichzelf in stand houdt en voedsel levert voor mens en dier. Door te investeren in EarthGuard, investeer je in:
               </p>
             </motion.div>
 

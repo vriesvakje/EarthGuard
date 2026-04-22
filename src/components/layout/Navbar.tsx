@@ -45,7 +45,7 @@ export function Navbar() {
     { href: "/verhaal", label: "ONS VERHAAL" },
     { href: "/over-ons", label: "OVER ONS" },
     { href: "/kaart", label: "KAART & PROJECTEN" },
-    { href: "/methode", label: "ONZE METHODE" },
+    { href: "/methode", label: "DE BODEM" },
     { href: "/community", label: "COMMUNITY" },
   ];
 
