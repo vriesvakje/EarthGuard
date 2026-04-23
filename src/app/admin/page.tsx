@@ -23,14 +23,14 @@ export default async function AdminOverview() {
       supabase.from("newsletter_subscribers").select("id"),
       supabase.from("crowdfunding").select("*").limit(1).single(),
       supabase.from("events").select("id").eq("active", true),
-      supabase.from("impact").select("*").single(),
+      supabase.from("impact").select("*").order("id", { ascending: false }).limit(1),
     ]);
 
   const orders = ordersRes.data ?? [];
   const subscribers = subscribersRes.data ?? [];
   const crowdfunding = crowdfundingRes.data;
   const activeEvents = eventsRes.data ?? [];
-  const impact = impactRes.data;
+  const impact = impactRes.data?.[0];
 
   const totalRevenue = orders.reduce((sum, o) => sum + o.amount_total, 0);
   const totalMeters = orders.reduce((sum, o) => sum + o.meters, 0);

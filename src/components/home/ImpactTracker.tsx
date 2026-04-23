@@ -47,15 +47,17 @@ export function ImpactTracker() {
   useEffect(() => {
     async function fetchImpact() {
       try {
-        const { data, error } = await supabase
+        const { data: rows, error } = await supabase
           .from('impact')
           .select('*')
-          .single();
+          .order('id', { ascending: false })
+          .limit(1);
         
+        const data = rows?.[0];
         if (data && !error) {
           setStats(prev => prev.map(s => ({
             ...s,
-            value: data[s.id]?.toLocaleString('nl-NL') || s.value
+            value: Number(data[s.id])?.toLocaleString('nl-NL') || s.value
           })));
         } else if (error) {
           console.error("Supabase Error:", error);

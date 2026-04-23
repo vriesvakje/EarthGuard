@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Save, Leaf, Trees, Droplets, Squirrel } from "lucide-react";
 
 type ImpactData = {
-  id?: string;
+  id?: number;
   m2: number;
   trees: number;
   co2: number;
@@ -32,13 +32,15 @@ export default function AdminImpactPage() {
 
   useEffect(() => {
     async function fetchImpact() {
-      const { data: impact } = await supabase.from("impact").select("*").single();
+      // Get the latest row (there should only be one, but use order+limit to be safe)
+      const { data: rows } = await supabase.from("impact").select("*").order("id", { ascending: false }).limit(1);
+      const impact = rows?.[0];
       if (impact) {
         setData({
           id: impact.id,
-          m2: impact.m2 ?? 0,
+          m2: Number(impact.m2) ?? 0,
           trees: impact.trees ?? 0,
-          co2: impact.co2 ?? 0,
+          co2: Number(impact.co2) ?? 0,
           animals: impact.animals ?? 0,
         });
       }
@@ -59,7 +61,7 @@ export default function AdminImpactPage() {
         .update({ m2: data.m2, trees: data.trees, co2: data.co2, animals: data.animals })
         .eq("id", data.id));
     } else {
-      // Insert new row (let Supabase generate the UUID)
+      // Insert new row (let Supabase generate the id)
       ({ error } = await supabase
         .from("impact")
         .insert({ m2: data.m2, trees: data.trees, co2: data.co2, animals: data.animals }));
