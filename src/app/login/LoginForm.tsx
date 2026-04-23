@@ -218,6 +218,17 @@ export default function LoginForm() {
                 {isLogin ? "Inloggen" : "Account aanmaken"}
               </Button>
             </form>
+
+            {isLogin && (
+              <div className="text-center mt-2">
+                <Link
+                  href="/forgot-password"
+                  className="text-sm text-forest/60 hover:text-forest transition-colors"
+                >
+                  Wachtwoord vergeten?
+                </Link>
+              </div>
+            )}
           </CardContent>
 
           <CardFooter className="justify-center">

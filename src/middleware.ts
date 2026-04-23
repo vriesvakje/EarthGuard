@@ -66,9 +66,10 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // Redirect authenticated users away from login page
+  // Redirect authenticated users away from login/forgot-password page
   if (
-    request.nextUrl.pathname.startsWith("/login") &&
+    (request.nextUrl.pathname.startsWith("/login") ||
+      request.nextUrl.pathname.startsWith("/forgot-password")) &&
     user
   ) {
     const url = request.nextUrl.clone();
