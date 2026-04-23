@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Leaf, LogOut, User, Menu, X } from "lucide-react";
+import { Leaf, LogOut, User, Menu, X, Shield } from "lucide-react";
 import { createClient } from "@/lib/supabase/browser";
 import { useEffect, useState } from "react";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
+
+const ADMIN_EMAILS = ["earthguard.project@gmail.com"];
 
 export function Navbar() {
   const [user, setUser] = useState<SupabaseUser | null>(null);
@@ -14,6 +16,9 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
   const supabase = createClient();
+
+  const isAdmin = user?.email ? ADMIN_EMAILS.includes(user.email) : false;
+  const dashboardHref = isAdmin ? "/admin" : "/dashboard";
 
   useEffect(() => {
     const getUser = async () => {
@@ -73,10 +78,10 @@ export function Navbar() {
             <>
               {user ? (
                 <>
-                  <Link href="/dashboard">
+                  <Link href={dashboardHref}>
                     <Button variant="ghost" className="text-forest hover:bg-forest/10 rounded-full px-6">
-                      <User className="h-4 w-4 mr-2" />
-                      DASHBOARD
+                      {isAdmin ? <Shield className="h-4 w-4 mr-2" /> : <User className="h-4 w-4 mr-2" />}
+                      {isAdmin ? "ADMIN" : "DASHBOARD"}
                     </Button>
                   </Link>
                   <Button
@@ -142,12 +147,12 @@ export function Navbar() {
                 {user ? (
                   <div className="space-y-1">
                     <Link
-                      href="/dashboard"
+                      href={dashboardHref}
                       onClick={() => setMenuOpen(false)}
                       className="flex items-center gap-2 px-4 py-3 text-forest font-medium rounded-xl hover:bg-forest/10 transition-colors"
                     >
-                      <User className="h-4 w-4" />
-                      DASHBOARD
+                      {isAdmin ? <Shield className="h-4 w-4" /> : <User className="h-4 w-4" />}
+                      {isAdmin ? "ADMIN" : "DASHBOARD"}
                     </Link>
                     <button
                       onClick={handleLogout}

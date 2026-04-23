@@ -40,6 +40,17 @@ export async function middleware(request: NextRequest) {
   // Admin emails that can access /admin
   const ADMIN_EMAILS = ["earthguard.project@gmail.com"];
 
+  // Redirect admin users from /dashboard to /admin
+  if (
+    request.nextUrl.pathname.startsWith("/dashboard") &&
+    user &&
+    ADMIN_EMAILS.includes(user.email ?? "")
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/admin";
+    return NextResponse.redirect(url);
+  }
+
   // Protect dashboard route - redirect to login if not authenticated
   if (
     request.nextUrl.pathname.startsWith("/dashboard") &&
@@ -73,7 +84,7 @@ export async function middleware(request: NextRequest) {
     user
   ) {
     const url = request.nextUrl.clone();
-    url.pathname = "/dashboard";
+    url.pathname = ADMIN_EMAILS.includes(user.email ?? "") ? "/admin" : "/dashboard";
     return NextResponse.redirect(url);
   }
 
