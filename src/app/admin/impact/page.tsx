@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Save, Leaf, Trees, Droplets, Squirrel } from "lucide-react";
 
 type ImpactData = {
+  id?: string;
   m2: number;
   trees: number;
   co2: number;
@@ -34,6 +35,7 @@ export default function AdminImpactPage() {
       const { data: impact } = await supabase.from("impact").select("*").single();
       if (impact) {
         setData({
+          id: impact.id,
           m2: impact.m2 ?? 0,
           trees: impact.trees ?? 0,
           co2: impact.co2 ?? 0,
@@ -49,11 +51,19 @@ export default function AdminImpactPage() {
     setSaving(true);
     setSaved(false);
 
-    // Try update first, then insert if no row exists
-    const { error } = await supabase.from("impact").upsert({
-      id: 1,
-      ...data,
-    });
+    let error;
+    if (data.id) {
+      // Update existing row
+      ({ error } = await supabase
+        .from("impact")
+        .update({ m2: data.m2, trees: data.trees, co2: data.co2, animals: data.animals })
+        .eq("id", data.id));
+    } else {
+      // Insert new row (let Supabase generate the UUID)
+      ({ error } = await supabase
+        .from("impact")
+        .insert({ m2: data.m2, trees: data.trees, co2: data.co2, animals: data.animals }));
+    }
 
     if (!error) {
       setSaved(true);
