@@ -131,7 +131,7 @@ export default function OverOnsPage() {
                   <item.icon className="h-6 w-6" />
                 </div>
                 <h4 className="text-xl font-bold text-forest mb-3">{item.title}</h4>
-                <p className="text-forest/70 leading-relaxed">{item.description}</p>
+                <p className="text-body text-forest/70 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </div>

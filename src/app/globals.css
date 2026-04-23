@@ -9,6 +9,11 @@
   --beige: #F5F5DC;
   --earth-brown: #8B4513;
   --radius: 1rem;
+
+  /* Typografie-tokens — pas hier de tekstgroottes centraal aan */
+  --font-size-label: 0.875rem;    /* 14px — labels, tags, kleine tekst */
+  --font-size-body: 1.2rem;         /* 16px — beschrijvingen, subtitels, body */
+  --font-size-lead: 1.125rem;     /* 18px — intro-tekst, langere paragrafen */
   --background: var(--beige);
   --foreground: var(--forest-green);
   --card: var(--beige);
@@ -87,6 +92,7 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
 }
 
 .dark {
@@ -128,9 +134,23 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground text-body;
   }
   html {
     @apply font-sans;
   }
+}
+
+/* Typografie-utility-klassen — gekoppeld aan de tokens in :root */
+@utility text-label {
+  font-size: var(--font-size-label);
+  line-height: calc(1.25 / 0.875);
+}
+@utility text-body {
+  font-size: var(--font-size-body);
+  line-height: calc(1.5 / 1);
+}
+@utility text-lead {
+  font-size: var(--font-size-lead);
+  line-height: calc(1.75 / 1.125);
 }

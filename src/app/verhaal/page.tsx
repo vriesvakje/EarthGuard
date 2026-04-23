@@ -141,7 +141,7 @@ export default function VerhaalPage() {
                       <step.icon className="h-7 w-7" />
                     </div>
                     <h3 className="text-xl font-bold text-forest">{step.title}</h3>
-                    <p className="text-forest/70 leading-relaxed">{step.description}</p>
+                    <p className="text-body text-forest/70 leading-relaxed">{step.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -211,7 +211,7 @@ export default function VerhaalPage() {
                   <Card key={i} className="border-none shadow-lg bg-white rounded-2xl">
                     <CardContent className="p-6 text-center">
                       <p className="text-3xl font-black text-forest">{stat.number}</p>
-                      <p className="text-xs font-bold uppercase opacity-40 mt-1">{stat.label}</p>
+                      <p className="text-label font-bold uppercase opacity-50 mt-1">{stat.label}</p>
                     </CardContent>
                   </Card>
                 ))}

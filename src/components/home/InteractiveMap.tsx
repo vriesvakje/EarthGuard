@@ -116,7 +116,7 @@ export function InteractiveMap() {
                     <MapPin className="h-8 w-8 text-forest" />
                   </div>
                   <p className="text-xl font-bold text-forest">Tilburg, Project I</p>
-                  <p className="text-sm text-forest/60">Bekijk onze projectlocaties op de <Link href="/kaart" className="underline hover:opacity-80">kaart pagina</Link></p>
+                  <p className="text-body text-forest/60">Bekijk onze projectlocaties op de <Link href="/kaart" className="underline hover:opacity-80">kaart pagina</Link></p>
                 </div>
               </div>
             )}
@@ -125,10 +125,10 @@ export function InteractiveMap() {
             <div className="absolute bottom-8 right-8 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white flex items-center gap-4 z-10">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-forest"></div>
-                <span className="text-xs font-bold uppercase">Tilburg Project I</span>
+                <span className="text-label font-bold uppercase">Tilburg Project I</span>
               </div>
               <div className="h-4 w-[1px] bg-forest/20"></div>
-              <span className="text-xs font-medium">5.0667° E, 51.5555° N</span>
+              <span className="text-label font-medium">5.0667° E, 51.5555° N</span>
             </div>
           </div>
 
@@ -155,13 +155,13 @@ export function InteractiveMap() {
                     <CardContent className="p-8 space-y-6">
                       <div>
                         <h3 className="text-2xl font-bold text-forest mb-1">{selectedPlot.name}</h3>
-                        <p className="text-sm opacity-60 flex items-center gap-1">
+                        <p className="text-body opacity-60 flex items-center gap-1">
                           <MapPin className="h-3 w-3" /> Berkel-Enschot, Tilburg
                         </p>
                       </div>
 
                       <div className="space-y-2">
-                        <div className="flex justify-between text-sm font-bold">
+                        <div className="flex justify-between text-body font-bold">
                           <span>Voortgang herstel</span>
                           <span>{selectedPlot.progress}%</span>
                         </div>
@@ -174,7 +174,7 @@ export function InteractiveMap() {
                         </div>
                       </div>
 
-                      <p className="text-sm leading-relaxed opacity-80">
+                      <p className="text-body leading-relaxed opacity-80">
                         Dit perceel wordt omgezet in een gemengde Agroforestry met focus op inheemse soorten en bodemherstel.
                       </p>
 
@@ -195,7 +195,7 @@ export function InteractiveMap() {
                     <Info className="h-12 w-12 text-forest/20" />
                   </div>
                   <h3 className="text-xl font-bold text-forest/40">Selecteer een kavel</h3>
-                  <p className="text-sm text-forest/40">
+                  <p className="text-body text-forest/40">
                     Klik op een icoon op de kaart om details en de voortgang van het herstel te bekijken.
                   </p>
                 </Card>

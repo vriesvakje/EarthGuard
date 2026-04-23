@@ -96,7 +96,7 @@ export default function MethodePage() {
                   <p className="text-white font-bold text-xl mt-3">
                     Uitgeput door gif
                   </p>
-                  <p className="text-white/70 text-sm mt-1">
+                  <p className="text-white/80 text-body mt-1">
                     Kale, gebarsten grond zonder leven
                   </p>
                 </div>
@@ -128,7 +128,7 @@ export default function MethodePage() {
                   <p className="text-white font-bold text-xl mt-3">
                     Hersteld door natuur
                   </p>
-                  <p className="text-white/70 text-sm mt-1">
+                  <p className="text-white/80 text-body mt-1">
                     Weelderige akker met klaver, grassen en bloemen
                   </p>
                 </div>
@@ -175,7 +175,7 @@ export default function MethodePage() {
                     <h4 className="text-lg font-bold text-forest mb-1">
                       Geen water vasthouden
                     </h4>
-                    <p className="text-forest/70 leading-relaxed">
+                    <p className="text-body text-forest/70 leading-relaxed">
                       Zonder bodemleven kan de grond geen water vasthouden. Bij
                       zware regen spoelt de bovenlaag weg.
                     </p>
@@ -231,7 +231,7 @@ export default function MethodePage() {
                   <p className="text-white font-bold text-2xl mb-2">
                     Een kale bodem is een bodem die sterft
                   </p>
-                  <p className="text-white/80 text-sm">
+                  <p className="text-white/80 text-body">
                     Zonder schimmels, bacteriën en wormen verliest de grond zijn
                     levenskracht
                   </p>
@@ -362,7 +362,7 @@ export default function MethodePage() {
                   <p className="text-white font-bold text-2xl mb-2">
                     Levend ecosysteem
                   </p>
-                  <p className="text-white/80 text-sm">
+                  <p className="text-white/80 text-body">
                     CO₂-opslag en biodiversiteit hand in hand
                   </p>
                 </div>

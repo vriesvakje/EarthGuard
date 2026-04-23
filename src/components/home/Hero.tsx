@@ -68,7 +68,7 @@ export function Hero() {
           {/* Decorative element */}
           <div className="absolute -bottom-6 -left-6 bg-earth text-beige p-8 rounded-2xl shadow-xl max-w-[200px]">
             <p className="text-4xl font-bold mb-1">0%</p>
-            <p className="text-sm font-medium opacity-90">van doel bereikt voor Brabant I</p>
+            <p className="text-body font-medium opacity-90">van doel bereikt voor Brabant I</p>
           </div>
         </motion.div>
       </div>

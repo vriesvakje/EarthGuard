@@ -84,7 +84,7 @@ export function ImpactTracker() {
             <p className="text-lg opacity-80">
               Live data van onze lopende projecten in Noord-Brabant. Van herstelde overhoekjes tot bruisende vijvers.
             </p>
-            <p className="text-sm italic opacity-60">
+            <p className="text-body italic opacity-70">
               Inclusief ons actieve dierenbeheer met varkens en kippen die helpen bij het bodemherstel.
             </p>
           </div>
@@ -105,7 +105,7 @@ export function ImpactTracker() {
                     <Image src={stat.icon} alt={stat.label} width={24} height={24} className={`h-6 w-6 ${stat.color}`} />
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm font-medium text-muted-foreground">{stat.label}</p>
+                    <p className="text-label font-medium text-muted-foreground">{stat.label}</p>
                     <div className="flex items-baseline gap-1">
                       <span className="text-4xl font-bold text-forest">{stat.value}</span>
                       <span className="text-lg font-semibold text-forest/60">{stat.unit}</span>

@@ -64,7 +64,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center space-x-8 text-sm font-medium text-forest">
+        <nav className="hidden md:flex items-center space-x-8 text-body font-medium text-forest">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} className="hover:opacity-80 transition-opacity">
               {link.label}

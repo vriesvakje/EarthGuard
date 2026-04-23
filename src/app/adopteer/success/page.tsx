@@ -70,11 +70,11 @@ function SuccessContent() {
                 </span>
               </div>
               <div className="h-[1px] bg-forest/10" />
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between text-body">
                 <span className="opacity-60">Totaal betaald</span>
                 <span className="font-bold">{orderInfo.total}</span>
               </div>
-              <p className="text-xs opacity-40">
+              <p className="text-label opacity-40">
                 Order ID: {sessionId?.slice(-8)}
               </p>
             </CardContent>
@@ -84,7 +84,7 @@ function SuccessContent() {
         {!orderInfo && sessionId && (
           <Card className="border-none shadow-xl bg-white mb-8 rounded-[2rem]">
             <CardContent className="p-8">
-              <p className="text-sm opacity-60">
+              <p className="text-body opacity-60">
                 Je betaling is ontvangen. Je ontvangt een bevestiging per e-mail.
               </p>
             </CardContent>

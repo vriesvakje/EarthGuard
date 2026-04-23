@@ -251,7 +251,7 @@ export default function KaartPage() {
                 <div className="w-12 h-12 rounded-full bg-forest text-beige flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
                   <Trees className="h-6 w-6" />
                 </div>
-                <div className="mt-2 px-3 py-1 bg-white/90 rounded-full text-xs font-bold text-forest shadow-sm">
+                <div className="mt-2 px-3 py-1 bg-white/90 rounded-full text-label font-bold text-forest shadow-sm">
                   Brabant I
                 </div>
               </div>
@@ -260,7 +260,7 @@ export default function KaartPage() {
                 <div className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
                   <Droplets className="h-6 w-6" />
                 </div>
-                <div className="mt-2 px-3 py-1 bg-white/90 rounded-full text-xs font-bold text-forest shadow-sm">
+                <div className="mt-2 px-3 py-1 bg-white/90 rounded-full text-label font-bold text-forest shadow-sm">
                   Brabant II
                 </div>
               </div>
@@ -269,7 +269,7 @@ export default function KaartPage() {
                 <div className="w-12 h-12 rounded-full bg-amber-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
                   <Squirrel className="h-6 w-6" />
                 </div>
-                <div className="mt-2 px-3 py-1 bg-white/90 rounded-full text-xs font-bold text-forest shadow-sm">
+                <div className="mt-2 px-3 py-1 bg-white/90 rounded-full text-label font-bold text-forest shadow-sm">
                   Brabant III
                 </div>
               </div>
@@ -282,31 +282,31 @@ export default function KaartPage() {
 
               {/* Map legend */}
               <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white z-10">
-                <p className="text-xs font-bold text-forest uppercase mb-2">Legenda</p>
+                <p className="text-label font-bold text-forest uppercase mb-2">Legenda</p>
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-forest" />
-                    <span className="text-xs text-forest/70">Agroforestry</span>
+                    <span className="text-label text-forest/70">Agroforestry</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-blue-500" />
-                    <span className="text-xs text-forest/70">Vijver ecosysteem</span>
+                    <span className="text-label text-forest/70">Vijver ecosysteem</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-amber-500" />
-                    <span className="text-xs text-forest/70">Dieren & bodemherstel</span>
+                    <span className="text-label text-forest/70">Dieren & bodemherstel</span>
                   </div>
                 </div>
               </div>
 
               {/* Region label */}
               <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl shadow-lg border border-white z-10">
-                <p className="text-xs font-bold text-forest uppercase">Noord-Brabant</p>
+                <p className="text-label font-bold text-forest uppercase">Noord-Brabant</p>
               </div>
             </div>
           </motion.div>
 
-          <p className="text-center text-sm text-forest/50 italic">
+          <p className="text-center text-body text-forest/50 italic">
             Boven: overzicht van de drie EarthGuard projectlocaties in Noord-Brabant
           </p>
         </div>
@@ -356,12 +356,12 @@ export default function KaartPage() {
                           </Badge>
                         </div>
                         <div className="space-y-2">
-                          <div className="flex justify-between text-sm font-bold">
+                          <div className="flex justify-between text-body font-bold">
                             <span className="text-forest/70">Voortgang</span>
                             <span className="text-forest">{project.progress}%</span>
                           </div>
                           <Progress value={project.progress} className="h-3" />
-                          <div className="flex justify-between text-xs text-forest/50">
+                          <div className="flex justify-between text-label text-forest/50">
                             <span>€{project.current.toLocaleString('nl-NL')} opgehaald</span>
                             <span>Doel: €{project.target.toLocaleString('nl-NL')}</span>
                           </div>
@@ -371,18 +371,18 @@ export default function KaartPage() {
 
                     {/* Project details */}
                     <CardContent className="p-10">
-                      <div className="flex items-center gap-2 text-sm text-forest/50 mb-2">
+                      <div className="flex items-center gap-2 text-body text-forest/50 mb-2">
                         <MapPin className="h-3 w-3" />
                         <span>{project.location}</span>
                       </div>
                       <h4 className="text-2xl font-bold text-forest mb-3">{project.name}</h4>
-                      <p className="text-forest/70 leading-relaxed mb-6">{project.description}</p>
+                      <p className="text-body text-forest/70 leading-relaxed mb-6">{project.description}</p>
 
                       <div className="space-y-3 mb-8">
                         {project.features.map((feature) => (
                           <div key={feature} className="flex items-center gap-3">
                             <div className={`w-2 h-2 rounded-full ${project.type === 'forest' ? 'bg-green-500' : project.type === 'pond' ? 'bg-blue-500' : 'bg-amber-500'}`} />
-                            <span className="text-sm text-forest/70">{feature}</span>
+                            <span className="text-body text-forest/70">{feature}</span>
                           </div>
                         ))}
                       </div>
@@ -458,7 +458,7 @@ export default function KaartPage() {
                     <h4 className={`font-bold ${step.status === "current" ? "text-forest" : "text-forest/50"}`}>
                       {step.phase}
                     </h4>
-                    <p className={`text-sm ${step.status === "current" ? "text-forest/70" : "text-forest/40"}`}>
+                    <p className={`text-body ${step.status === "current" ? "text-forest/70" : "text-forest/40"}`}>
                       {step.description}
                     </p>
                   </div>
@@ -524,7 +524,7 @@ export default function KaartPage() {
           >
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-forest/5 border border-forest/10">
               <Leaf className="h-4 w-4 text-forest" />
-              <span className="text-forest font-medium text-sm">100% van de opbrengst investeren we in nieuwe natuur</span>
+              <span className="text-forest font-medium text-body">100% van de opbrengst investeren we in nieuwe natuur</span>
             </div>
           </motion.div>
         </div>

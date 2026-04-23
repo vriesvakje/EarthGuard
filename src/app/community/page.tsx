@@ -390,7 +390,7 @@ export default function CommunityPage() {
                       <stat.icon className={`h-6 w-6 ${stat.color}`} />
                     </div>
                     <p className="text-4xl font-bold text-forest mb-1">{stat.value}</p>
-                    <p className="text-sm font-medium text-forest/60">{stat.label}</p>
+                    <p className="text-label font-medium text-forest/60">{stat.label}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -483,18 +483,18 @@ export default function CommunityPage() {
                       <div className="shrink-0 text-center">
                         <div className="w-16 h-16 rounded-2xl bg-forest/10 flex flex-col items-center justify-center">
                           <Calendar className="h-6 w-6 text-forest mb-1" />
-                          <span className="text-[10px] font-bold text-forest uppercase">Binnenkort</span>
+                          <span className="text-label font-bold text-forest uppercase">Binnenkort</span>
                         </div>
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
-                          <span className="text-xs font-bold tracking-wider uppercase px-2 py-1 rounded-full bg-forest/10 text-forest">
+                          <span className="text-label font-bold tracking-wider uppercase px-2 py-1 rounded-full bg-forest/10 text-forest">
                             {event.tag}
                           </span>
                         </div>
                         <h4 className="text-lg font-bold text-forest mb-1">{event.title}</h4>
-                        <p className="text-sm text-forest/60 leading-relaxed mb-3">{event.description}</p>
-                        <div className="flex items-center gap-1 text-sm text-forest/50">
+                        <p className="text-body text-forest/60 leading-relaxed mb-3">{event.description}</p>
+                        <div className="flex items-center gap-1 text-body text-forest/50">
                           <MapPin className="h-3 w-3" />
                           <span>{event.location}</span>
                         </div>
@@ -548,8 +548,8 @@ export default function CommunityPage() {
                     {story.initials}
                   </div>
                   <div>
-                    <p className="font-bold text-sm">{story.name}</p>
-                    <p className="text-xs opacity-60">{story.role}</p>
+                    <p className="font-bold text-body">{story.name}</p>
+                    <p className="text-label opacity-60">{story.role}</p>
                   </div>
                 </div>
               </motion.div>
@@ -594,7 +594,7 @@ export default function CommunityPage() {
                 </div>
                 <h4 className="text-xl font-bold text-forest mb-3">{item.name}</h4>
                 <p className="text-forest/70 leading-relaxed mb-4">{item.description}</p>
-                <div className="flex items-center justify-center gap-1 text-sm text-forest/50">
+                <div className="flex items-center justify-center gap-1 text-body text-forest/50">
                   <Clock className="h-3 w-3" />
                   <span>{item.available}</span>
                 </div>
@@ -609,12 +609,12 @@ export default function CommunityPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-center mt-12"
           >
-            <p className="text-forest/50 text-sm italic mb-4">
+            <p className="text-forest/50 text-body italic mb-4">
               De opbrengst van alle producten gaat rechtstreeks naar het herstel van nieuwe natuurgebieden.
             </p>
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-forest/5 border border-forest/10">
               <Leaf className="h-4 w-4 text-forest" />
-              <span className="text-forest font-medium text-sm">Elke euro verdient terug voor de natuur</span>
+              <span className="text-forest font-medium text-body">Elke euro verdient terug voor de natuur</span>
             </div>
           </motion.div>
         </div>
@@ -669,9 +669,9 @@ export default function CommunityPage() {
                           }`}>
                             {i + 1}
                           </span>
-                          <span className="text-sm font-medium text-forest">{entry.name}</span>
+                          <span className="text-body font-medium text-forest">{entry.name}</span>
                         </div>
-                        <span className="text-sm text-forest/50 font-mono">{entry.value}</span>
+                        <span className="text-body text-forest/50 font-mono">{entry.value}</span>
                       </div>
                     ))}
                   </CardContent>
@@ -772,7 +772,7 @@ export default function CommunityPage() {
               </div>
               <h4 className="text-xl font-bold text-forest mb-2">Instagram</h4>
               <p className="text-forest/60">@earthguard</p>
-              <p className="text-sm text-forest/50 mt-2">Dagelijkse updates uit de Agroforestry</p>
+              <p className="text-body text-forest/50 mt-2">Dagelijkse updates uit de Agroforestry</p>
             </motion.a>
 
             <motion.a
@@ -790,7 +790,7 @@ export default function CommunityPage() {
               </div>
               <h4 className="text-xl font-bold text-forest mb-2">WhatsApp Groep</h4>
               <p className="text-forest/60">EarthGuard Community</p>
-              <p className="text-sm text-forest/50 mt-2">Direct contact met medeguards</p>
+              <p className="text-body text-forest/50 mt-2">Direct contact met medeguards</p>
             </motion.a>
 
             <motion.div
@@ -805,7 +805,7 @@ export default function CommunityPage() {
               </div>
               <h4 className="text-xl font-bold text-forest mb-2">Kom Langs</h4>
               <p className="text-forest/60">Elke zaterdag open</p>
-              <p className="text-sm text-forest/50 mt-2">Tilburg, Project I — 11:00 & 14:00</p>
+              <p className="text-body text-forest/50 mt-2">Tilburg, Project I — 11:00 & 14:00</p>
             </motion.div>
           </div>
 

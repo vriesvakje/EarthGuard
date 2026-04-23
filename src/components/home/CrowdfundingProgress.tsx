@@ -47,10 +47,10 @@ export function CrowdfundingProgress() {
             <div className="space-y-4 max-w-lg">
               <div className="flex justify-between items-end">
                 <span className="text-3xl font-bold">€{current.toLocaleString("nl-NL")}</span>
-                <span className="text-sm opacity-80">Doel: €{target.toLocaleString("nl-NL")}</span>
+                <span className="text-body opacity-80">Doel: €{target.toLocaleString("nl-NL")}</span>
               </div>
               <Progress value={percentage} className="h-4 bg-beige/20" />
-              <div className="flex justify-between text-sm font-medium">
+              <div className="flex justify-between text-body font-medium">
                 <span>{percentage.toFixed(1)}% gefinancierd</span>
                 <span>Nog €{(target - current).toLocaleString("nl-NL")} te gaan</span>
               </div>
@@ -83,7 +83,7 @@ export function CrowdfundingProgress() {
               ].map((step, i) => (
                 <div key={i} className="text-center">
                   <div className={`h-2 rounded-full mb-2 ${step.active ? "bg-beige" : "bg-beige/20"}`} />
-                  <span className="text-xs font-medium opacity-70">{step.label}</span>
+                  <span className="text-label font-medium opacity-70">{step.label}</span>
                 </div>
               ))}
             </div>

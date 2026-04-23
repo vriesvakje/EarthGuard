@@ -124,7 +124,7 @@ export default function AdoptPage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-bold text-lg">De Vijver</h3>
-                    <p className="text-sm opacity-60 mb-4">Draag bij aan de aanleg van waterpartijen.</p>
+                    <p className="text-body opacity-60 mb-4">Draag bij aan de aanleg van waterpartijen.</p>
                     <span className="font-bold text-forest">+ €25,00</span>
                   </div>
                   {extraDonation === 'vijver' && <CheckCircle2 className="h-6 w-6 text-forest" />}
@@ -141,7 +141,7 @@ export default function AdoptPage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-bold text-lg">De Dieren</h3>
-                    <p className="text-sm opacity-60 mb-4">Hulpmiddelen voor dierenbeheer en nestkastjes.</p>
+                    <p className="text-body opacity-60 mb-4">Hulpmiddelen voor dierenbeheer en nestkastjes.</p>
                     <span className="font-bold text-forest">+ €15,00</span>
                   </div>
                   {extraDonation === 'dieren' && <CheckCircle2 className="h-6 w-6 text-forest" />}
@@ -160,12 +160,12 @@ export default function AdoptPage() {
             </CardHeader>
             <CardContent className="p-8 space-y-6">
               <div className="space-y-4">
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between text-body">
                   <span className="opacity-60">{meters}m² Landbouwgrond</span>
                   <span className="font-bold">€{(meters * pricePerMeter).toFixed(2)}</span>
                 </div>
                 {extraDonation && (
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-body">
                     <span className="opacity-60">Extra: {extraDonation === 'vijver' ? 'De Vijver' : 'De Dieren'}</span>
                     <span className="font-bold">€{extraDonation === 'vijver' ? '25.00' : '15.00'}</span>
                   </div>
@@ -178,13 +178,13 @@ export default function AdoptPage() {
               </div>
 
               {error && (
-                <div className="bg-red-50 text-red-600 text-sm p-4 rounded-xl">
+                <div className="bg-red-50 text-red-600 text-label p-4 rounded-xl">
                   {error}
                 </div>
               )}
 
               <div className="space-y-4 pt-4">
-                <p className="text-[10px] uppercase tracking-widest font-bold opacity-40 text-center">Betaal veilig via</p>
+                <p className="text-label uppercase tracking-widest font-bold opacity-40 text-center">Betaal veilig via</p>
                 <div className="flex justify-center gap-4 opacity-40 grayscale">
                   <CreditCard className="h-8 w-8" />
                   <div className="w-12 h-8 bg-current rounded-md" />
@@ -204,7 +204,7 @@ export default function AdoptPage() {
                     "AFREKENEN"
                   )}
                 </Button>
-                <p className="text-[10px] text-center opacity-40 px-4">
+                <p className="text-label text-center opacity-40 px-4">
                   Door af te rekenen ga je akkoord met onze algemene voorwaarden.
                 </p>
               </div>

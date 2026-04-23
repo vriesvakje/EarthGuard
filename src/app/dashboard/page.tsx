@@ -124,7 +124,7 @@ export default function DashboardPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
         <div>
           <h1 className="text-3xl font-bold text-forest">Welkom terug, Natuurbeschermer!</h1>
-          <p className="opacity-60">Hier is een overzicht van jouw persoonlijke impact.</p>
+          <p className="text-body opacity-60">Hier is een overzicht van jouw persoonlijke impact.</p>
         </div>
         <div className="flex gap-4">
           <Badge className="bg-forest/10 text-forest hover:bg-forest/10 border-none px-4 py-2 rounded-full font-bold">
@@ -149,7 +149,7 @@ export default function DashboardPage() {
                       <stat.icon className="h-6 w-6" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase opacity-40">{stat.label}</p>
+                      <p className="text-label font-bold uppercase opacity-50">{stat.label}</p>
                       <p className="text-2xl font-bold text-forest">{stat.value}</p>
                     </div>
                   </div>
@@ -203,7 +203,7 @@ export default function DashboardPage() {
                         </div>
                         <div>
                           <p className="font-bold text-forest">{order.meters}m² Biodivers Agroforestry</p>
-                          <p className="text-xs opacity-50">
+                          <p className="text-label opacity-50">
                             {new Date(order.created_at).toLocaleDateString("nl-NL", {
                               day: "numeric",
                               month: "long",
@@ -217,7 +217,7 @@ export default function DashboardPage() {
                       </div>
                       <div className="text-right">
                         <p className="font-bold text-forest">€{(order.amount_total / 100).toFixed(2)}</p>
-                        <p className="text-xs text-green-600 font-bold">✓ Betaald</p>
+                        <p className="text-label text-green-600 font-bold">✓ Betaald</p>
                       </div>
                     </div>
                   ))}
@@ -251,10 +251,10 @@ export default function DashboardPage() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="absolute top-[40%] left-[30%] w-[15%] h-[20%] bg-forest/40 rounded-lg border-2 border-forest flex items-center justify-center"
                   >
-                    <span className="text-[10px] font-black text-forest">MIJN m²</span>
+                    <span className="text-label font-black text-forest">MIJN m²</span>
                   </motion.div>
                 )}
-                <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md p-3 rounded-xl shadow-lg border border-white text-[10px] font-bold">
+                <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md p-3 rounded-xl shadow-lg border border-white text-label font-bold">
                   PROJECT TILBURG I - PERCEEL 42
                 </div>
               </div>
@@ -281,9 +281,9 @@ export default function DashboardPage() {
                     <update.icon className="h-5 w-5" />
                   </div>
                   <div className="space-y-1 pt-1">
-                    <p className="text-xs font-bold opacity-40 uppercase">{update.date}</p>
+                    <p className="text-label font-bold opacity-50 uppercase">{update.date}</p>
                     <h4 className="font-bold text-forest leading-tight">{update.title}</h4>
-                    <p className="text-sm opacity-70 leading-relaxed">{update.description}</p>
+                    <p className="text-body opacity-70 leading-relaxed">{update.description}</p>
                   </div>
                 </div>
               ))}
