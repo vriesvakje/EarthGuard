@@ -22,20 +22,29 @@ export function Navbar() {
 
   useEffect(() => {
     const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
-      setLoading(false);
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        setUser(user);
+      } catch {
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
     };
 
     getUser();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user ?? null);
-      }
-    );
+    try {
+      const { data: { subscription } } = supabase.auth.onAuthStateChange(
+        (_event, session) => {
+          setUser(session?.user ?? null);
+        }
+      );
 
-    return () => subscription.unsubscribe();
+      return () => subscription.unsubscribe();
+    } catch {
+      return;
+    }
   }, [supabase]);
 
   const handleLogout = async () => {
@@ -49,6 +58,7 @@ export function Navbar() {
   const navLinks = [
     { href: "/verhaal", label: "ONS VERHAAL" },
     { href: "/over-ons", label: "OVER ONS" },
+    { href: "/prototype", label: "PROTOTYPE" },
     { href: "/kaart", label: "KAART & PROJECTEN" },
     { href: "/methode", label: "DE BODEM" },
     { href: "/community", label: "COMMUNITY" },

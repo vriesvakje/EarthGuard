@@ -1,15 +1,15 @@
-import { Hero } from "@/components/home/Hero";
-import { ImpactTracker } from "@/components/home/ImpactTracker";
-import { CrowdfundingProgress } from "@/components/home/CrowdfundingProgress";
-import { InteractiveMap } from "@/components/home/InteractiveMap";
+import { VisionHero } from "@/components/landing/VisionHero";
+import { VisionStory } from "@/components/landing/VisionStory";
+import { VisionRoadmap } from "@/components/landing/VisionRoadmap";
+import { VisionCTA } from "@/components/landing/VisionCTA";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <ImpactTracker />
-      <CrowdfundingProgress />
-      <InteractiveMap />
+      <VisionHero />
+      <VisionStory />
+      <VisionRoadmap />
+      <VisionCTA />
     </>
   );
 }

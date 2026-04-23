@@ -25,6 +25,7 @@ export function Footer() {
             <h3 className="font-bold mb-4">INFORMATIE</h3>
             <ul className="space-y-2 text-body opacity-80">
               <li><Link href="/over-ons">Over ons</Link></li>
+              <li><Link href="/prototype">Prototype</Link></li>
               <li><Link href="/contact">Contact</Link></li>
               <li><Link href="/faq">FAQ</Link></li>
             </ul>
