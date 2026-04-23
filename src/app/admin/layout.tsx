@@ -36,17 +36,17 @@ export default function AdminLayout({
       {/* Sidebar */}
       <aside className="w-64 bg-forest text-beige flex flex-col shrink-0">
         <div className="p-6 border-b border-beige/10">
-          <h1 className="text-xl font-bold">🌿 Admin</h1>
-          <p className="text-sm opacity-60 mt-1">EarthGuard Dashboard</p>
+          <h1 className="text-2xl font-bold">🌿 Admin</h1>
+          <p className="text-base opacity-60 mt-1">EarthGuard Dashboard</p>
         </div>
         <nav className="flex-1 p-4 space-y-1">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-beige/10 transition-colors"
+              className="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium hover:bg-beige/10 transition-colors"
             >
-              <item.icon className="h-4 w-4" />
+              <item.icon className="h-5 w-5" />
               {item.label}
             </Link>
           ))}
@@ -54,9 +54,9 @@ export default function AdminLayout({
         <div className="p-4 border-t border-beige/10">
           <Link
             href="/"
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-beige/10 transition-colors opacity-70"
+            className="flex items-center gap-2 px-4 py-3 rounded-xl text-base font-medium hover:bg-beige/10 transition-colors opacity-70"
           >
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="h-5 w-5" />
             Terug naar site
           </Link>
         </div>

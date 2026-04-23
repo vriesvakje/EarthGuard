@@ -74,7 +74,7 @@ export default function AdminCrowdfundingPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="text-sm font-medium text-gray-700">Projectnaam</label>
+              <label className="text-base font-medium text-gray-700">Projectnaam</label>
               <Input
                 value={form.project_name}
                 onChange={(e) => setForm({ ...form, project_name: e.target.value })}
@@ -82,7 +82,7 @@ export default function AdminCrowdfundingPage() {
               />
             </div>
             <div>
-              <label className="text-sm font-medium text-gray-700">Doelbedrag (€)</label>
+              <label className="text-base font-medium text-gray-700">Doelbedrag (€)</label>
               <Input
                 type="number"
                 value={form.target}
@@ -90,7 +90,7 @@ export default function AdminCrowdfundingPage() {
               />
             </div>
             <div>
-              <label className="text-sm font-medium text-gray-700">Huidig bedrag (€)</label>
+              <label className="text-base font-medium text-gray-700">Huidig bedrag (€)</label>
               <Input
                 type="number"
                 value={form.current}
@@ -107,7 +107,7 @@ export default function AdminCrowdfundingPage() {
                 {saving ? "Opslaan..." : "Opslaan"}
               </Button>
               {saved && (
-                <span className="text-sm text-green-600 font-medium">✓ Opgeslagen!</span>
+                <span className="text-base text-green-600 font-medium">✓ Opgeslagen!</span>
               )}
             </div>
           </CardContent>

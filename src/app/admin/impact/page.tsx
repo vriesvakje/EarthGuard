@@ -99,7 +99,7 @@ export default function AdminImpactPage() {
                   <field.icon className={`h-6 w-6 ${field.color}`} />
                 </div>
                 <div className="flex-1">
-                  <label className="text-sm font-medium text-gray-700">{field.label}</label>
+                  <label className="text-base font-medium text-gray-700">{field.label}</label>
                   <Input
                     type="number"
                     value={data[field.key]}
@@ -123,7 +123,7 @@ export default function AdminImpactPage() {
               {saving ? "Opslaan..." : "Opslaan"}
             </Button>
             {saved && (
-              <span className="text-sm text-green-600 font-medium">✓ Opgeslagen!</span>
+              <span className="text-base text-green-600 font-medium">✓ Opgeslagen!</span>
             )}
           </div>
         </CardContent>

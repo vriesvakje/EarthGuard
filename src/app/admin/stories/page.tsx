@@ -80,24 +80,24 @@ export default function AdminStoriesPage() {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="text-sm font-medium text-gray-700">Naam *</label>
+                <label className="text-base font-medium text-gray-700">Naam *</label>
                 <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="De Eerste Guard" />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Rol *</label>
+                <label className="text-base font-medium text-gray-700">Rol *</label>
                 <Input value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })} placeholder="Vroege adopter" />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Initialen *</label>
+                <label className="text-base font-medium text-gray-700">Initialen *</label>
                 <Input value={form.initials} onChange={(e) => setForm({ ...form, initials: e.target.value })} placeholder="EG" maxLength={3} />
               </div>
             </div>
             <div>
-              <label className="text-sm font-medium text-gray-700">Quote *</label>
-              <textarea value={form.quote} onChange={(e) => setForm({ ...form, quote: e.target.value })} rows={3} className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-forest" placeholder="Wat wil deze Guard vertellen?" />
+              <label className="text-base font-medium text-gray-700">Quote *</label>
+              <textarea value={form.quote} onChange={(e) => setForm({ ...form, quote: e.target.value })} rows={3} className="w-full rounded-md border border-gray-200 px-3 py-2 text-base resize-none focus:outline-none focus:ring-2 focus:ring-forest" placeholder="Wat wil deze Guard vertellen?" />
             </div>
             <div>
-              <label className="text-sm font-medium text-gray-700">Sorteervolgorde</label>
+              <label className="text-base font-medium text-gray-700">Sorteervolgorde</label>
               <Input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: parseInt(e.target.value) || 0 })} />
             </div>
             <div className="flex gap-3">
@@ -122,9 +122,9 @@ export default function AdminStoriesPage() {
                       <h3 className="font-semibold text-gray-900">{story.name}</h3>
                       <p className="text-xs text-gray-500">{story.role}</p>
                     </div>
-                    {!story.active && <span className="text-xs text-gray-400 ml-2">(Inactief)</span>}
+                    {!story.active && <span className="text-sm text-gray-400 ml-2">(Inactief)</span>}
                   </div>
-                  <p className="text-sm text-gray-600 line-clamp-2 mt-1 italic">&ldquo;{story.quote}&rdquo;</p>
+                  <p className="text-base text-gray-600 line-clamp-2 mt-1 italic">&ldquo;{story.quote}&rdquo;</p>
                 </div>
                 <div className="flex items-center gap-2 ml-4">
                   <button onClick={() => handleToggle(story.id, story.active)} className="p-2 hover:bg-gray-100 rounded-lg">

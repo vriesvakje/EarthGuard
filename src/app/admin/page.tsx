@@ -108,7 +108,7 @@ export default async function AdminOverview() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">
+                  <p className="text-base font-medium text-gray-500">
                     {stat.title}
                   </p>
                   <p className="text-2xl font-bold text-gray-900 mt-1">
@@ -140,14 +140,14 @@ export default async function AdminOverview() {
                   <p className="text-2xl font-bold text-forest">
                     {s.value.toLocaleString("nl-NL")}
                   </p>
-                  <p className="text-sm text-gray-500 mt-1">{s.label}</p>
+                  <p className="text-base text-gray-500 mt-1">{s.label}</p>
                 </div>
               ))}
             </div>
             <div className="mt-4">
               <Link
                 href="/admin/impact"
-                className="text-sm text-forest font-medium hover:underline"
+                className="text-base text-forest font-medium hover:underline"
               >
                 Impact stats bewerken →
               </Link>
@@ -175,7 +175,7 @@ export default async function AdminOverview() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">{link.label}</p>
-                    <p className="text-sm text-gray-500">{link.desc}</p>
+                    <p className="text-base text-gray-500">{link.desc}</p>
                   </div>
                 </div>
               </CardContent>

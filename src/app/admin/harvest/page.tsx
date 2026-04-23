@@ -90,33 +90,33 @@ export default function AdminHarvestPage() {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium text-gray-700">Naam *</label>
+                <label className="text-base font-medium text-gray-700">Naam *</label>
                 <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Eieren van Geredde Kippen" />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Beschikbaarheid *</label>
+                <label className="text-base font-medium text-gray-700">Beschikbaarheid *</label>
                 <Input value={form.available} onChange={(e) => setForm({ ...form, available: e.target.value })} placeholder="Jaarlijks, Lente t/m Herfst" />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Icoon</label>
-                <select value={form.icon} onChange={(e) => setForm({ ...form, icon: e.target.value })} className="w-full h-10 rounded-md border border-gray-200 px-3 text-sm">
+                <label className="text-base font-medium text-gray-700">Icoon</label>
+                <select value={form.icon} onChange={(e) => setForm({ ...form, icon: e.target.value })} className="w-full h-10 rounded-md border border-gray-200 px-3 text-base">
                   {iconOptions.map((i) => <option key={i} value={i}>{i}</option>)}
                 </select>
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Kleur</label>
-                <select value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })} className="w-full h-10 rounded-md border border-gray-200 px-3 text-sm">
+                <label className="text-base font-medium text-gray-700">Kleur</label>
+                <select value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })} className="w-full h-10 rounded-md border border-gray-200 px-3 text-base">
                   {colorOptions.map((c) => <option key={c} value={c}>{c}</option>)}
                 </select>
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Sorteervolgorde</label>
+                <label className="text-base font-medium text-gray-700">Sorteervolgorde</label>
                 <Input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: parseInt(e.target.value) || 0 })} />
               </div>
             </div>
             <div>
-              <label className="text-sm font-medium text-gray-700">Beschrijving *</label>
-              <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows={3} className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-forest" />
+              <label className="text-base font-medium text-gray-700">Beschrijving *</label>
+              <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows={3} className="w-full rounded-md border border-gray-200 px-3 py-2 text-base resize-none focus:outline-none focus:ring-2 focus:ring-forest" />
             </div>
             <div className="flex gap-3">
               <Button onClick={handleSave} className="bg-forest text-beige hover:bg-forest/90">{editing ? "Opslaan" : "Aanmaken"}</Button>
@@ -135,10 +135,10 @@ export default function AdminHarvestPage() {
                   <div className="flex items-center gap-3 mb-1">
                     <h3 className="font-semibold text-gray-900">{item.name}</h3>
                     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${item.color}`}>{item.icon}</span>
-                    {!item.active && <span className="text-xs text-gray-400">(Inactief)</span>}
+                    {!item.active && <span className="text-sm text-gray-400">(Inactief)</span>}
                   </div>
-                  <p className="text-sm text-gray-500 line-clamp-1">{item.description}</p>
-                  <p className="text-xs text-gray-400 mt-1">Beschikbaar: {item.available} · Volgorde: {item.sort_order}</p>
+                  <p className="text-base text-gray-500 line-clamp-1">{item.description}</p>
+                  <p className="text-sm text-gray-400 mt-1">Beschikbaar: {item.available} · Volgorde: {item.sort_order}</p>
                 </div>
                 <div className="flex items-center gap-2 ml-4">
                   <button onClick={() => handleToggle(item.id, item.active)} className="p-2 hover:bg-gray-100 rounded-lg">

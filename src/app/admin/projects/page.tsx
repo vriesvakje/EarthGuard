@@ -149,48 +149,48 @@ export default function AdminProjectsPage() {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium text-gray-700">Naam *</label>
+                <label className="text-base font-medium text-gray-700">Naam *</label>
                 <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Brabant I — Tilburg" />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Locatie *</label>
+                <label className="text-base font-medium text-gray-700">Locatie *</label>
                 <Input value={form.location} onChange={(e) => setForm({ ...form, location: e.target.value })} placeholder="Berkel-Enschot, Tilburg" />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Type</label>
-                <select value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })} className="w-full h-10 rounded-md border border-gray-200 px-3 text-sm">
+                <label className="text-base font-medium text-gray-700">Type</label>
+                <select value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })} className="w-full h-10 rounded-md border border-gray-200 px-3 text-base">
                   {typeOptions.map((t) => <option key={t} value={t}>{t}</option>)}
                 </select>
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Status</label>
-                <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })} className="w-full h-10 rounded-md border border-gray-200 px-3 text-sm">
+                <label className="text-base font-medium text-gray-700">Status</label>
+                <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })} className="w-full h-10 rounded-md border border-gray-200 px-3 text-base">
                   {statusOptions.map((s) => <option key={s} value={s}>{s}</option>)}
                 </select>
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Doel (m²)</label>
+                <label className="text-base font-medium text-gray-700">Doel (m²)</label>
                 <Input type="number" value={form.target} onChange={(e) => setForm({ ...form, target: parseInt(e.target.value) || 0 })} />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Huidig (m²)</label>
+                <label className="text-base font-medium text-gray-700">Huidig (m²)</label>
                 <Input type="number" value={form.current} onChange={(e) => setForm({ ...form, current: parseInt(e.target.value) || 0 })} />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Voortgang (%)</label>
+                <label className="text-base font-medium text-gray-700">Voortgang (%)</label>
                 <Input type="number" min={0} max={100} value={form.progress} onChange={(e) => setForm({ ...form, progress: parseInt(e.target.value) || 0 })} />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Sorteervolgorde</label>
+                <label className="text-base font-medium text-gray-700">Sorteervolgorde</label>
                 <Input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: parseInt(e.target.value) || 0 })} />
               </div>
             </div>
             <div>
-              <label className="text-sm font-medium text-gray-700">Beschrijving *</label>
-              <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows={3} className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-forest" />
+              <label className="text-base font-medium text-gray-700">Beschrijving *</label>
+              <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows={3} className="w-full rounded-md border border-gray-200 px-3 py-2 text-base resize-none focus:outline-none focus:ring-2 focus:ring-forest" />
             </div>
             <div>
-              <label className="text-sm font-medium text-gray-700">Features (kommagescheiden)</label>
+              <label className="text-base font-medium text-gray-700">Features (kommagescheiden)</label>
               <Input value={featuresInput} onChange={(e) => setFeaturesInput(e.target.value)} placeholder="Agroforestry 7 lagen, Kune Kune varkens, Vijver" />
             </div>
             <div className="flex gap-3">
@@ -214,8 +214,8 @@ export default function AdminProjectsPage() {
                     <Badge className={statusColors[project.status] || "bg-gray-100 text-gray-700"}>{project.status}</Badge>
                     {!project.active && <Badge variant="outline" className="text-gray-400">Inactief</Badge>}
                   </div>
-                  <p className="text-sm text-gray-500 line-clamp-1">{project.description}</p>
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-base text-gray-500 line-clamp-1">{project.description}</p>
+                  <p className="text-sm text-gray-400 mt-1">
                     {project.location} · {project.current}/{project.target} m² · {project.progress}% · Volgorde: {project.sort_order}
                   </p>
                 </div>

@@ -137,7 +137,7 @@ export default function AdminEventsPage() {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium text-gray-700">Titel *</label>
+                <label className="text-base font-medium text-gray-700">Titel *</label>
                 <Input
                   value={form.title}
                   onChange={(e) => setForm({ ...form, title: e.target.value })}
@@ -145,7 +145,7 @@ export default function AdminEventsPage() {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Locatie *</label>
+                <label className="text-base font-medium text-gray-700">Locatie *</label>
                 <Input
                   value={form.location}
                   onChange={(e) => setForm({ ...form, location: e.target.value })}
@@ -153,7 +153,7 @@ export default function AdminEventsPage() {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Datum weergave *</label>
+                <label className="text-base font-medium text-gray-700">Datum weergave *</label>
                 <Input
                   value={form.date}
                   onChange={(e) => setForm({ ...form, date: e.target.value })}
@@ -161,7 +161,7 @@ export default function AdminEventsPage() {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Maand/Jaar</label>
+                <label className="text-base font-medium text-gray-700">Maand/Jaar</label>
                 <Input
                   value={form.month}
                   onChange={(e) => setForm({ ...form, month: e.target.value })}
@@ -169,11 +169,11 @@ export default function AdminEventsPage() {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Tag</label>
+                <label className="text-base font-medium text-gray-700">Tag</label>
                 <select
                   value={form.tag}
                   onChange={(e) => setForm({ ...form, tag: e.target.value })}
-                  className="w-full h-10 rounded-md border border-gray-200 px-3 text-sm"
+                  className="w-full h-10 rounded-md border border-gray-200 px-3 text-base"
                 >
                   {tagOptions.map((t) => (
                     <option key={t} value={t}>{t}</option>
@@ -181,7 +181,7 @@ export default function AdminEventsPage() {
                 </select>
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Sorteervolgorde</label>
+                <label className="text-base font-medium text-gray-700">Sorteervolgorde</label>
                 <Input
                   type="number"
                   value={form.sort_order}
@@ -190,13 +190,13 @@ export default function AdminEventsPage() {
               </div>
             </div>
             <div>
-              <label className="text-sm font-medium text-gray-700">Beschrijving *</label>
+              <label className="text-base font-medium text-gray-700">Beschrijving *</label>
               <textarea
                 value={form.description}
                 onChange={(e) => setForm({ ...form, description: e.target.value })}
                 placeholder="Beschrijf het event..."
                 rows={3}
-                className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-forest"
+                className="w-full rounded-md border border-gray-200 px-3 py-2 text-base resize-none focus:outline-none focus:ring-2 focus:ring-forest"
               />
             </div>
             <div className="flex gap-3">
@@ -235,8 +235,8 @@ export default function AdminEventsPage() {
                       <Badge variant="outline" className="text-gray-400">Inactief</Badge>
                     )}
                   </div>
-                  <p className="text-sm text-gray-500 line-clamp-1">{event.description}</p>
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-base text-gray-500 line-clamp-1">{event.description}</p>
+                  <p className="text-sm text-gray-400 mt-1">
                     {event.date} · {event.location} · Volgorde: {event.sort_order}
                   </p>
                 </div>
